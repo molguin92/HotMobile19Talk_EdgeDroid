@@ -1,0 +1,27 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[format=hang]{caption}
+\usepackage{subcaption}
+\captionsetup{font=normalsize,labelfont={bf,sf}}
+\captionsetup[sub]{font={small}, textfont={normalfont}, labelfont={bf,sf}}
+\usepackage{indentfirst}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning,automata}
+\usepackage{libertine}
+\usepackage{sourcecodepro}
+\usepackage{todonotes}
+\usepackage{wrapfig}
+
+\usepackage[style=ieee,
+backend=bibtex,
+sorting=none,
+sortcites,
+maxbibnames=1,
+minbibnames=1,
+maxcitenames=2, 
+mincitenames=1]{biblatex}
+\AtBeginBibliography{\footnotesize}
+\addbibresource{bibliography.bib}
