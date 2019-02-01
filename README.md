@@ -1,4 +1,5 @@
-# HotMobile 2019 Slides for the talk "EdgeDroid: An Experimental Approach to Benchmarking Human-in-the-Loop Applications"
+# HotMobile 2019 Slides 
+## "EdgeDroid: An Experimental Approach to Benchmarking Human-in-the-Loop Applications"
 ## Author: Manuel Olguín
 
 Beamer template was obtained from Giampiero Salvi.
