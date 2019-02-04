@@ -10,30 +10,94 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
     \begin{center}
-        \begin{Large}
-            \textbf{EdgeDroid} 
-        \end{Large}
-    
+        \begin{LARGE}
+            \textbf{EdgeDroid}\\
+        \end{LARGE}
         \emph{An Experimental Approach to Benchmarking Human-in-the-Loop Applications}\\
         \vspace{0.02\textheight}
-        {\footnotesize M. Olguín Muñoz\kthaffil, J. Wang\cmuaffil, M. Satyanarayanan\cmuaffil and J. Gross\kthaffil\\
-        \vspace{0.02\textheight}
-        \kthaffil~KTH Royal Institute of Technology\\
-        \cmuaffil~Carnegie Mellon University\\}
+        {\footnotesize \underline{M. Olguín Muñoz}\kthaffil, J. Wang\cmuaffil, M. Satyanarayanan\cmuaffil and J. Gross\kthaffil\\
+            \vspace{0.02\textheight}
+            \kthaffil~KTH Royal Institute of Technology\\
+            \cmuaffil~Carnegie Mellon University\\}
     \end{center}
 
-    \vspace{0.03\textheight}
+    \vspace{0.04\textheight}
 
-    \begin{footnotesize}
+    \begin{tiny}
         \raggedleft%
-        Speaker: Manuel Olguín Muñoz\\
-        {\tiny HotMobile'19 Session 5: February 28\textsuperscript{th} 2019, Santa Cruz, CA}\\
-    \end{footnotesize}
+        \emph{HotMobile'19 Session 5: February 28\textsuperscript{th} 2019, Santa Cruz, CA}\\
+    \end{tiny}
 \end{frame}
 
 \normalpage
-\begin{frame}{About the speaker}
-    
+\begin{frame}{Outline}
+    \tableofcontents[hideallsubsections]
 \end{frame}
+
+\section{Introduction \& Background}
+\subsection{Human-in-the-Loop Applications}
+\begin{frame}
+    \begin{columns}[onlytextwidth]
+        \fbox{%
+            \begin{column}{.25\linewidth}
+                \centering%
+                \onslide<2->{
+                    \includegraphics[width=\linewidth]{img/glass_wearable.jpeg}\\
+
+                }
+            \end{column}}%
+        \begin{column}{.5\linewidth}
+            \centering
+            \fbox{%
+                \input{figs/humanintheloop.tex}%
+            }
+        \end{column}%
+        \fbox{\begin{column}{.25\linewidth}
+                \centering%
+                \onslide<3>{
+                    \includegraphics[width=\linewidth]{img/NN.png}\\
+                }
+            \end{column}}%
+    \end{columns}%
+\end{frame}
+
+\subsection{The Problem}
+\begin{frame}{The Problem}
+    \begin{Large}
+        \centering%
+        Benchmarking human-in-the-loop applications is HARD\\
+    \end{Large}
+\end{frame}
+\section{Experimentally Benchmarking Human-in-the-Loop}
+\subsection{Approach}
+
+\begin{frame}{Approach: Motivation}
+    \begin{center}
+        \only<1>{\input{figs/humanintheloop.tex}}%
+        \only<2>{%
+            \input{figs/approach1.tex}%
+        }%
+        %\only<3>{%
+            %\input{}%
+        %}%
+        \onslide<2->{%
+            \\\vspace{.1\textheight}%
+            What if we could do away with the human user?%
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Implementation}
+
+\end{frame}
+
+\begin{frame}{Evaluation}
+
+\end{frame}
+
+
+\subsection{Implementation}
+\subsection{Evaluation}
+\section{Conclusions}
 
 \end{document}

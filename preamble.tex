@@ -4,24 +4,79 @@
 \usepackage{subcaption}
 \captionsetup{font=normalsize,labelfont={bf,sf}}
 \captionsetup[sub]{font={small}, textfont={normalfont}, labelfont={bf,sf}}
-\usepackage{indentfirst}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.14}
 \usepackage[export]{adjustbox}
+
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows.meta,positioning,automata}
+\usepackage{tikzpeople}
+\usetikzlibrary{shapes,arrows.meta,positioning,automata,matrix,shapes.symbols}
+
 \usepackage{libertine}
 \usepackage{sourcecodepro}
+\usepackage{fontawesome}
+
 \usepackage{todonotes}
 \usepackage{wrapfig}
+\usepackage[binary-units]{siunitx}
+\sisetup{
+    detect-all,
+    detect-inline-family=math,
+    detect-inline-weight=math,
+    detect-display-math=true
+}
+\DeclareSIUnit{\belmilliwatt}{Bm}
+\DeclareSIUnit{\dBm}{\deci\belmilliwatt}
+
+%\usepackage[hidelinks]{hyperref}
+
+\newcommand{\emailref}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\telref}[1]{\href{tel:#1}{\texttt{#1}}}
+\newcommand{\urlref}[1]{\href{#1}{\texttt{#1}}}
 
 \usepackage[style=ieee,
-backend=bibtex,
-sorting=none,
-sortcites,
-maxbibnames=1,
-minbibnames=1,
-maxcitenames=2, 
-mincitenames=1]{biblatex}
+    backend=bibtex,
+    sorting=none,
+    sortcites,
+    maxbibnames=1,
+    minbibnames=1,
+    maxcitenames=2,
+    mincitenames=1]{biblatex}
 \AtBeginBibliography{\footnotesize}
 \addbibresource{bibliography.bib}
+
+
+\newcommand{\icontag}[2]{
+    #1~#2\\
+}
+
+%% TOC before each section
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>
+        \frametitle{Outline}
+        \setcounter{tocdepth}{2}%
+        \tableofcontents[currentsection,hideothersubsections]
+    \end{frame}
+}
+
+\AtEndDocument%
+{
+    \startpage
+    \begin{frame}
+        \begin{center}
+            \begin{Large}
+                \textbf{Thank you!}\\
+            \end{Large}
+            \vspace{.1\textheight}
+            \begin{footnotesize}
+                \icontag{\faAt}{\href{mailto:molguin@kth.se}{\texttt{molguin@kth.se}}}
+                \icontag{\faTwitter}{\href{https://twitter.com/molguin92}{\texttt{@molguin92}}}
+                \icontag{\faGithub}{\href{https://github.com/molguin92}{\texttt{molguin92}}}
+            \end{footnotesize}
+        \end{center}
+
+    \end{frame}
+    \normalpage
+}
