@@ -37,28 +37,68 @@
 \section{Introduction \& Background}
 \subsection{Human-in-the-Loop Applications}
 \begin{frame}
+    \onslide<2->{\begin{columns}[onlytextwidth]
+        \begin{column}{.335\linewidth}%filler
+        \end{column}%
+        \begin{column}{.1\linewidth}
+            \centering%
+            \includegraphics[width=\linewidth]{img/sound_wave.png}
+        \end{column}%
+        \begin{column}{.01\linewidth}
+        \end{column}%
+        \begin{column}{.1\linewidth}
+            \centering%
+            \includegraphics[width=\linewidth]{img/film.png}
+        \end{column}%
+        \begin{column}{.01\linewidth}
+        \end{column}%
+        \begin{column}{.1\linewidth}
+            \centering%
+            \includegraphics[width=\linewidth]{img/accel.png}
+        \end{column}%
+        \begin{column}{.335\linewidth}%filler
+        \end{column}%
+    \end{columns}}%
     \begin{columns}[onlytextwidth]
-        \fbox{%
-            \begin{column}{.25\linewidth}
-                \centering%
-                \onslide<2->{
-                    \includegraphics[width=\linewidth]{img/glass_wearable.jpeg}\\
-
-                }
-            \end{column}}%
+        \begin{column}{.25\linewidth}
+            \centering%
+            \onslide<3->{
+                \includegraphics[width=\linewidth]{img/glass_wearable.jpeg}\\
+            }
+        \end{column}
         \begin{column}{.5\linewidth}
             \centering
-            \fbox{%
-                \input{figs/humanintheloop.tex}%
+            \input{figs/humanintheloop.tex}%
+        \end{column}%
+        \begin{column}{.25\linewidth}
+            \centering%
+            \onslide<3->{
+                \includegraphics[width=\linewidth]{img/NN.png}\\
             }
         \end{column}%
-        \fbox{\begin{column}{.25\linewidth}
-                \centering%
-                \onslide<3>{
-                    \includegraphics[width=\linewidth]{img/NN.png}\\
-                }
-            \end{column}}%
     \end{columns}%
+    \onslide<2->{\begin{columns}[onlytextwidth]
+        \begin{column}{.335\linewidth}%filler
+        \end{column}%
+        \begin{column}{.1\linewidth}
+            \centering%
+            \includegraphics[width=\linewidth]{img/sound_wave.png}
+        \end{column}%
+        \begin{column}{.01\linewidth}
+        \end{column}%
+        \begin{column}{.1\linewidth}
+            \centering%
+            \includegraphics[width=\linewidth]{img/film.png}
+        \end{column}%
+        \begin{column}{.01\linewidth}
+        \end{column}%
+        \begin{column}{.1\linewidth}
+            \centering%
+            \includegraphics[width=\linewidth]{img/vibration.png}
+        \end{column}%
+        \begin{column}{.335\linewidth}%filler
+        \end{column}}%
+    \end{columns}
 \end{frame}
 
 \subsection{The Problem}
@@ -77,14 +117,43 @@
         \only<2>{%
             \input{figs/approach1.tex}%
         }%
+        \only<3>{%
+            \input{figs/approach2.tex}%
+        }%
         %\only<3>{%
-            %\input{}%
+        %\input{}%
         %}%
         \onslide<2->{%
             \\\vspace{.1\textheight}%
             What if we could do away with the human user?%
         }
     \end{center}
+\end{frame}
+
+\begin{frame}{EdgeDroid: Idea}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            \begin{itemize}
+                \itemsep2em
+                \item Generate realistic, real-time inputs.
+                \onslide<2->{\begin{itemize}
+                    \item Trace of human-generated inputs.
+                \end{itemize}}
+                \item Correctly react to feedback.
+                \onslide<2->{\begin{itemize}
+                    \item Model of human interaction.
+                \end{itemize}}
+            \end{itemize}
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            \centering%
+            \includegraphics[width=.7\linewidth]{img/astromech.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{EdgeDroid: Tracing}
+    
 \end{frame}
 
 \begin{frame}{Implementation}

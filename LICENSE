@@ -1,7 +1,10 @@
 KTHLaTeX is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 (C) 2018 Giampiero Salvi and Örjan Ekeberg
 
-The files under kthgraphics are owned by KTH Royal Institute of Technology and may follow a different license.
+The files under ./kthgraphics are owned by KTH Royal Institute of Technology and may follow a different license.
+
+The files under ./img are owned by third parties and may also follow a different license. 
+They are incorporated into this presentation under Fair Use legislation.
 
 Attribution-ShareAlike 4.0 International
 
