@@ -1,0 +1,22 @@
+\begin{tikzpicture}[align=center,
+    node distance=.5cm and 1.5cm,
+    every initial by arrow/.style={-{Latex[length=2mm]}}]
+    % Place nodes              
+    \node [initial, very thick, state, minimum size=5em, initial text=, fill=white!85!blue] (play) {\textbf{Play}};
+    \node [state, very thick, above right=of play, minimum size=5em, fill=white!85!green] (change) {\textbf{Change}\\\textbf{step}};
+    \node [state, very thick, below right=of play, minimum size=5em, fill=white!85!orange] (rewind) {\textbf{Rewind}};
+    \node [state, very thick, accepting, above right=of rewind, minimum size=5em, fill=white!85!red] (shutdown) {\textbf{Shut}\\\textbf{down}};
+
+    % Draw edges
+    \path[draw, -{Latex[length=2mm]}, very thick]
+    (play) edge [out=270, in=180, color=red!50!yellow] node[below left, color=black] {Finished step but\\no feedback received} (rewind)
+    edge [out=90, in=180, color=black!30!green] node[above left, color=black] {Received feedback} (change)
+    edge [out=140, in=220,looseness=6] node[left] {Step\\not finished} (play)
+
+    (change) edge [bend left=5, color=black!30!green] node[below right, color=black] {Step changed} (play)
+    edge [out=0, in=90, color=black!30!green] node[above right, color=black] {All steps\\finished} (shutdown)
+
+    (rewind) edge [bend right=5, color=black!30!green] node[above right, color=black] {Rewound} (play)
+    edge [out=0, in=270, color=red] node[below right, color=black] {Too many\\rewinds} (shutdown);
+
+\end{tikzpicture}

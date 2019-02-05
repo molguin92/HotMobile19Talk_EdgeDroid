@@ -18,7 +18,7 @@
     ]
 
     \matrix [column sep=20mm,row sep=3mm] (mtx) {
-        \node[inner sep=0pt] (user) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
+        \node[inner sep=0pt, cross out, draw=red, line width=2mm] (user) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
          & \node [inner sep=0pt] (server) {\includegraphics[height=.2\textheight]{img/server.png}}; \\
     };
 
@@ -27,7 +27,7 @@
     (user) edge [out=45, in=135] node[above] {Sensory Input} (server)
     (server) edge [out=225, in=315] node[below] {Human-parseable\\Feedback} (user);
 
-    \draw[red, line width=2mm, line cap=round]
-    (user.south west) -- (user.north east)
-    (user.south east) -- (user.north west);
+    %\draw[red, line width=2mm, line cap=round]
+    %(user.south west) -- (user.north east)
+    %(user.south east) -- (user.north west);
 \end{tikzpicture}
