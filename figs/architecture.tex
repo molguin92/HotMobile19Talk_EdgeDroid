@@ -1,0 +1,36 @@
+\begin{tikzpicture}[align=center,
+    arrow/.style ={draw, thick, -{Latex[length=2.5mm]}}]
+    
+    \matrix[column sep=30mm, row sep=10mm, inner sep=2mm,
+    every node/.style={text width=4em, text centered}] (mtx) {
+        \node[draw, dashed, rectangle, fill=white, anchor=center, inner sep=2mm, ] (usermodel) {User Model};
+        & \node[draw, rectangle, fill=white, anchor=center, inner sep=2mm] (app_backend) {App Backend};\\
+
+        \node[fill=white, anchor=center, inner sep=2mm, minimum height=7em] (emulator) {Client Emulator};
+        & \node[draw, rectangle, fill=white, anchor=center, inner sep=2mm, minimum height=7em] (control) {Control Backend};\\
+    };
+
+    \node[inner sep=0mm, below=5mm of emulator, minimum height=2em] (label1) {Android\\Device};
+    \node[inner sep=0mm, below=5mm of control, minimum height=2em] (label2) {Cloudlet};
+
+    \node[rectangle, draw, inner sep=2mm, right=15mm of control.35, 
+    minimum width=20mm, minimum height=7mm] (config) {Config};
+    \node[rectangle, draw, inner sep=2mm, right=15mm of control.325, 
+    minimum width=20mm, minimum height=7mm] (trace) {Trace};
+
+    
+
+    \node[fit=(usermodel) (emulator), draw] (fit1) {};
+    %\node[fit=(fit1) (trace), draw] (fit2) {};
+    \node[fit=(app_backend) (control)] (fit2) {};
+
+    \node[fit=(label1) (fit1), draw] {};
+    \node[fit=(label2) (fit2), draw] {};
+
+    % arrows
+    \draw[arrow] (config) -- (control.35);
+    \draw[arrow] (trace) -- (control.325);
+
+    \draw[arrow, double, {Latex[length=2.5mm]}-{Latex[length=2.5mm]}] (control) -- (app_backend);
+
+\end{tikzpicture}
