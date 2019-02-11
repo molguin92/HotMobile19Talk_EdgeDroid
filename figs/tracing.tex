@@ -1,20 +1,36 @@
-\begin{tikzpicture}[align=center, node distance=0.7cm and 0.7cm,
-    line/.style ={draw, very thick, line cap=round, -{Latex[length=2.5mm]}, shorten >=0pt}]
-    \matrix [column sep=4mm,row sep=10mm] (mtx) {
-        & \node[draw, circle, minimum height=17mm, fill=white!60!red,
-            minimum width=17mm, anchor=center] (record) {Recorder};
-        & \node[inner sep=0pt] (trace) {\includegraphics[height=.12\textheight]{img/floppy.png}\\Trace}; \\
+\begin{tikzpicture}[align=center]
 
+    \node[inner sep=0pt] (user) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
+    \node[inner sep=0pt, right=30mm of user] (arrowsplit) {};
 
-        \node[inner sep=0pt] (user) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
-         & \node[draw=black, fill=white!80!orange, thick, single arrow, minimum height=33mm,
-            minimum width=16mm, single arrow head extend=2mm, anchor=center] (inputs) {Sensory inputs};
-         & \node [inner sep=0pt] (server) {\includegraphics[height=.2\textheight]{img/server.png}}; \\
+    \matrix [column sep=10mm,row sep=10mm, right=10mm of arrowsplit] (mtx) {
+        \node[draw, rectangle, rounded corners=1mm, minimum height=10mm, fill=white!60!orange,
+            minimum width=20mm, anchor=center] (record) {Recorder};
+        & \node[inner sep=0pt, anchor=center] (trace) {\includegraphics[height=.12\textheight]{img/floppy.png}}; \\
+
+        \node [inner sep=0pt, anchor=center] (server) {\includegraphics[height=.2\textheight]{img/server.png}}; & \\
     };
 
-    \path[draw, line]
-    (record) edge node {} (trace)
-    (inputs) edge node {} (record);
+    \node[inner sep=0pt, below=5mm of server] (serverarrowanchor) {};
+
+    \draw[very thick, line cap=round] (user) edge[] node[below] (sensorlabel) {Sensory\\Inputs} (arrowsplit.center);
+
+    \draw[very thick, line cap=round, -{Latex[length=2.5mm]}]
+    (arrowsplit.center) |- node[] {} (record);
+
+    \draw[very thick, line cap=round, -{Latex[length=2.5mm]}]
+    (arrowsplit.center) |- node[] {} (server);
+
+    \draw[thick, line cap=round, -{Latex[length=1.5mm]}]
+    (record) -- (trace);
+
+    \draw[very thick, line cap=round]
+    (server.south) -- (serverarrowanchor.center);
+
+    \draw[very thick, line cap=round, -{Latex[length=2.5mm]}]
+    (serverarrowanchor.center) -| (user.south); 
+
+    \node[inner sep=0pt, anchor=center, below=16mm of sensorlabel] {Feedback};
 
     %\draw[thick, line cap=round, -{Latex[length=2.5mm]}, shorten >=0pt]
     %(record.east) -- (trace.west);
