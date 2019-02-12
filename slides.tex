@@ -29,13 +29,13 @@
     \end{tiny}
 \end{frame}
 
-\normalpage
+\normalpage%
 \begin{frame}{Outline}
     \tableofcontents[hideallsubsections]
 \end{frame}
 
 \section{Introduction \& Background}
-\subsection{Human-in-the-Loop Applications}
+\subsection{Previous \& Related Work}
 \begin{frame}
     \onslide<2->{\begin{columns}[onlytextwidth]
         \begin{column}{.335\linewidth}%filler
@@ -101,17 +101,15 @@
     \end{columns}
 \end{frame}
 
-\subsection{The Problem}
-\begin{frame}{The Problem}
+\subsection{Motivation}
+\begin{frame}{Motivation}
     \begin{Large}
         \centering%
         Benchmarking human-in-the-loop applications is HARD\\
     \end{Large}
 \end{frame}
-\section{Experimentally Benchmarking Human-in-the-Loop}
-\subsection{Approach}
 
-\begin{frame}{Approach: Motivation}
+\begin{frame}{Motivation}
     \begin{center}
         \only<1>{\input{figs/humanintheloop.tex}}%
         \only<2>{%
@@ -129,6 +127,12 @@
         }
     \end{center}
 \end{frame}
+
+\subsection{Main Contributions}
+% TODO
+
+\section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
+\subsection{Approach}
 
 \begin{frame}{EdgeDroid: Idea}
     \begin{columns}[onlytextwidth]
@@ -164,6 +168,7 @@
     \end{center}
 \end{frame}
 
+\subsection{Implementation}
 \begin{frame}{Implementation}
     \begin{center}
         \input{figs/architecture.tex}
@@ -174,8 +179,6 @@
 
 \end{frame}
 
-
-\subsection{Implementation}
 \subsection{Evaluation}
 \section{Conclusions}
 

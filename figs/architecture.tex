@@ -65,18 +65,21 @@
 
         % between app and control backend
         \draw[arrowr] (fit_control.95) -- (fit_control.95 |- fit3.south);
-        \draw[arrow] (fit_control.85) -- (fit_control.85 |- fit3.south);
+        \draw[arrow] (fit_control.85) -- node[right] {\footnotesize Execution Control} (fit_control.85 |- fit3.south);
 
         % between app and user model
-        \coordinate (a1) at (app_backend.170 -| fit3.west);
-        \coordinate (a2) at (app_backend.190 -| fit3.west);
+        \coordinate (a1) at (app_backend.160 -| fit3.west);
+        \coordinate (a2) at (app_backend.200 -| fit3.west);
+        \coordinate (b1) at (a1 -| fit1.east);
+        \coordinate (b2) at (a2 -| fit1.east);
 
-        \draw[arrow] (a1) -- node[above] {Feedback Loop} (a1 -| fit1.east);
-        \draw[arrowr] (a2) -- (a2 -| fit1.east);
+        \draw[arrow] (a1) -- coordinate[midway] (ab1) (b1);
+        \draw[arrowr] (a2) -- coordinate[midway] (ab2) (b2);
+        \path (ab1) -- node[midway, anchor=center, inner sep=0mm] {Feedback Loop} (ab2); % center label between arrows
 
         % between control and client
-        \draw[arrow, dashed] (fit_control.155) -- node[above] {Config, Trace} (fit_control.155 -| fit1.east);
-        \draw[arrowr, dashed] (fit_control.205) -- node[below] {Results} (fit_control.205 -| fit1.east);
+        \draw[arrow, dashed] (fit_control.155) -- node[above] {Config, Trace} node[below] {\tiny Before experiment} (fit_control.155 -| fit1.east);
+        \draw[arrowr, dashed] (fit_control.205) -- node[above] {Results} node[below] {\tiny After experiment} (fit_control.205 -| fit1.east);
     \end{pgfonlayer}
 
 \end{tikzpicture}
