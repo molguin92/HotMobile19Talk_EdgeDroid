@@ -1,6 +1,7 @@
 \begin{tikzpicture}[align=center,
     arrow/.style={draw, thick, -{Latex[length=2mm]}},
-    arrowr/.style={draw, thick, {Latex[length=2mm]}-}]
+    arrowr/.style={draw, thick, {Latex[length=2mm]}-},
+    parallelogram/.style={trapezium,trapezium left angle=70,trapezium right angle=-70}]
 
     % layers
     \pgfdeclarelayer{background0}
@@ -28,13 +29,13 @@
             \node[inner sep=0mm, minimum height=.5em] {};
             & \node[inner sep=0mm, minimum height=.5em] {}; \\
 
-            \node[inner sep=0mm, minimum height=2em] (label1) {Android Device}; 
-            & \node[inner sep=0mm, minimum height=2em] (label2) {Cloudlet}; \\
+            \node[inner sep=0mm, minimum height=2em] (label1_padding) {}; 
+            & \node[inner sep=0mm, minimum height=2em] (label2_padding) {}; \\
         };
 
-        \node[rectangle, draw, inner sep=2mm, right=15mm of control.25, 
+        \node[parallelogram, draw, inner sep=2mm, right=10mm of control.25, 
         minimum width=20mm, minimum height=2em, fill=white!80!violet] (config) {Config};
-        \node[rectangle, draw, inner sep=2mm, right=15mm of control.335, 
+        \node[parallelogram, draw, inner sep=2mm, right=10mm of control.335, 
         minimum width=20mm, minimum height=2em, fill=white!80!violet] (trace) {Trace};
     \end{pgfonlayer}
 
@@ -47,11 +48,16 @@
 
     % main background fits
     \begin{pgfonlayer}{background0}
-        \node[fit=(label1) (fit1), draw, fill=white!80!green] {};
-        \node[fit=(label2) (fit_control) (fit3), draw, fill=white!80!black] {};
+        \node[fit=(label1_padding) (fit1), draw, fill=white!80!green] (android) {};
+        \node[fit=(label2_padding) (fit_control) (fit3) (config.top right corner) (trace.top right corner), draw, fill=white!80!black] (cloudlet) {};
     \end{pgfonlayer}
 
     \begin{pgfonlayer}{foreground}
+        % primary labels
+        \node[inner sep=2mm, above] at (android.south) {Android\\Device};
+        \node[inner sep=2mm, above] at (cloudlet.south) {Cloudlet};
+
+
         % arrows
         % config and trace
         \draw[arrow] (config.west) -- (config.west -| fit_control.east);
@@ -62,8 +68,11 @@
         \draw[arrow] (fit_control.85) -- (fit_control.85 |- fit3.south);
 
         % between app and user model
-        \draw[arrow] (app_backend.171) -- node[above] {Feedback Loop} (app_backend.171 -| fit1.east);
-        \draw[arrowr] (app_backend.189) -- (app_backend.189 -| fit1.east);
+        \coordinate (a1) at (app_backend.170 -| fit3.west);
+        \coordinate (a2) at (app_backend.190 -| fit3.west);
+
+        \draw[arrow] (a1) -- node[above] {Feedback Loop} (a1 -| fit1.east);
+        \draw[arrowr] (a2) -- (a2 -| fit1.east);
 
         % between control and client
         \draw[arrow, dashed] (fit_control.155) -- node[above] {Config, Trace} (fit_control.155 -| fit1.east);
