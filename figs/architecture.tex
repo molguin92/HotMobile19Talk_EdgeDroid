@@ -1,36 +1,73 @@
 \begin{tikzpicture}[align=center,
-    arrow/.style ={draw, thick, -{Latex[length=2.5mm]}}]
+    arrow/.style={draw, thick, -{Latex[length=2mm]}},
+    arrowr/.style={draw, thick, {Latex[length=2mm]}-}]
+
+    % layers
+    \pgfdeclarelayer{background0}
+    \pgfdeclarelayer{background1}
+    \pgfdeclarelayer{foreground}
+    \pgfsetlayers{background0,background1,foreground}
     
-    \matrix[column sep=30mm, row sep=10mm, inner sep=2mm,
-    every node/.style={text width=4em, text centered}] (mtx) {
-        \node[draw, dashed, rectangle, fill=white, anchor=center, inner sep=2mm, ] (usermodel) {User Model};
-        & \node[draw, rectangle, fill=white, anchor=center, inner sep=2mm] (app_backend) {App Backend};\\
+    \begin{pgfonlayer}{foreground}
+        \matrix[column sep=40mm, row sep=2mm, inner sep=2mm,
+        every node/.style={text width=4em, text centered, minimum width=5em}] (mtx) {
+            \node[draw, dashed, rectangle, anchor=center, inner sep=2mm, ] (usermodel) {User Model};
+            & \node[draw, dashed, rectangle, anchor=center, inner sep=2mm] (app_backend) {App Backend};\\
 
-        \node[fill=white, anchor=center, inner sep=2mm, minimum height=7em] (emulator) {Client Emulator};
-        & \node[draw, rectangle, fill=white, anchor=center, inner sep=2mm, minimum height=7em] (control) {Control Backend};\\
-    };
+            \node[inner sep=0mm] {}; %spacer
+            & \node[anchor=center, inner sep=0mm] (docker) {Container};\\
 
-    \node[inner sep=0mm, below=5mm of emulator, minimum height=2em] (label1) {Android\\Device};
-    \node[inner sep=0mm, below=5mm of control, minimum height=2em] (label2) {Cloudlet};
+            % spacers
+            \node[inner sep=0mm, minimum height=1.5em] {};
+            & \node[inner sep=0mm, minimum height=1.5em] {}; \\
 
-    \node[rectangle, draw, inner sep=2mm, right=15mm of control.35, 
-    minimum width=20mm, minimum height=7mm] (config) {Config};
-    \node[rectangle, draw, inner sep=2mm, right=15mm of control.325, 
-    minimum width=20mm, minimum height=7mm] (trace) {Trace};
+            \node[anchor=center, inner sep=2mm, minimum height=5em] (emulator) {Client Emulator};
+            & \node[anchor=center, inner sep=2mm, minimum height=5em] (control) {Control Backend};\\
 
-    
+            % spacers
+            \node[inner sep=0mm, minimum height=.5em] {};
+            & \node[inner sep=0mm, minimum height=.5em] {}; \\
 
-    \node[fit=(usermodel) (emulator), draw] (fit1) {};
-    %\node[fit=(fit1) (trace), draw] (fit2) {};
-    \node[fit=(app_backend) (control)] (fit2) {};
+            \node[inner sep=0mm, minimum height=2em] (label1) {Android Device}; 
+            & \node[inner sep=0mm, minimum height=2em] (label2) {Cloudlet}; \\
+        };
 
-    \node[fit=(label1) (fit1), draw] {};
-    \node[fit=(label2) (fit2), draw] {};
+        \node[rectangle, draw, inner sep=2mm, right=15mm of control.25, 
+        minimum width=20mm, minimum height=2em, fill=white!80!violet] (config) {Config};
+        \node[rectangle, draw, inner sep=2mm, right=15mm of control.335, 
+        minimum width=20mm, minimum height=2em, fill=white!80!violet] (trace) {Trace};
+    \end{pgfonlayer}
 
-    % arrows
-    \draw[arrow] (config) -- (control.35);
-    \draw[arrow] (trace) -- (control.325);
+    \begin{pgfonlayer}{background1}
+        \node[fit=(usermodel) (emulator), draw, fill=white!80!yellow] (fit1) {};
+        %\node[fit=(app_backend) (control)] (fit2) {};
+        \node[fit=(docker) (app_backend), draw, fill=white!80!blue] (fit3) {};
+        \node[fit=(control), draw, fill=white!80!red] (fit_control) {}; % just to make the size match
+    \end{pgfonlayer}
 
-    \draw[arrow, double, {Latex[length=2.5mm]}-{Latex[length=2.5mm]}] (control) -- (app_backend);
+    % main background fits
+    \begin{pgfonlayer}{background0}
+        \node[fit=(label1) (fit1), draw, fill=white!80!green] {};
+        \node[fit=(label2) (fit_control) (fit3), draw, fill=white!80!black] {};
+    \end{pgfonlayer}
+
+    \begin{pgfonlayer}{foreground}
+        % arrows
+        % config and trace
+        \draw[arrow] (config.west) -- (config.west -| fit_control.east);
+        \draw[arrow] (trace.west) -- (trace.west -| fit_control.east);
+
+        % between app and control backend
+        \draw[arrowr] (fit_control.95) -- (fit_control.95 |- fit3.south);
+        \draw[arrow] (fit_control.85) -- (fit_control.85 |- fit3.south);
+
+        % between app and user model
+        \draw[arrow] (app_backend.171) -- node[above] {Feedback Loop} (app_backend.171 -| fit1.east);
+        \draw[arrowr] (app_backend.189) -- (app_backend.189 -| fit1.east);
+
+        % between control and client
+        \draw[arrow, dashed] (fit_control.155) -- node[above] {Config, Trace} (fit_control.155 -| fit1.east);
+        \draw[arrowr, dashed] (fit_control.205) -- node[below] {Results} (fit_control.205 -| fit1.east);
+    \end{pgfonlayer}
 
 \end{tikzpicture}
