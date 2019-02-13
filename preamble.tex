@@ -8,6 +8,9 @@
 \pgfplotsset{compat=1.14}
 \usepackage[export]{adjustbox}
 
+% sequence diagrams
+\usepackage{pgf-umlsd}
+
 \usepackage{tikz}
 \usepackage{tikzpeople}
 \usetikzlibrary{shapes,arrows.meta,arrows,positioning,automata,matrix,shapes.symbols,shapes.misc,fit}
@@ -54,29 +57,77 @@
 
 \AtBeginSection[]
 {
-    \begin{frame}<beamer>
-        \frametitle{Outline}
-        \setcounter{tocdepth}{2}%
-        \tableofcontents[currentsection,hideothersubsections]
-    \end{frame}
+   \begin{frame}<beamer>
+       \frametitle{Outline}
+       \setcounter{tocdepth}{2}%
+       \bfseries%
+       \tableofcontents[currentsection,hideallsubsections]
+   \end{frame}
 }
 
-\AtEndDocument%
-{
-    \startpage
-    \begin{frame}
-        \begin{center}
-            \begin{Large}
-                \textbf{Thank you!}\\
-            \end{Large}
-            \vspace{.1\textheight}
-            \begin{footnotesize}
-                \icontag{\faAt}{\href{mailto:molguin@kth.se}{\texttt{molguin@kth.se}}}
-                \icontag{\faTwitter}{\href{https://twitter.com/molguin92}{\texttt{@molguin92}}}
-                \icontag{\faGithub}{\href{https://github.com/molguin92}{\texttt{molguin92}}}
-            \end{footnotesize}
-        \end{center}
+% \AtEndDocument%
+% {
+%     \startpage
+%     \begin{frame}
+%         \begin{center}
+%             \begin{Large}
+%                 \textbf{Thank you!}\\
+%             \end{Large}
+%             \vspace{.1\textheight}
+%             \begin{footnotesize}
+%                 \icontag{\faAt}{\href{mailto:molguin@kth.se}{\texttt{molguin@kth.se}}}
+%                 \icontag{\faTwitter}{\href{https://twitter.com/molguin92}{\texttt{@molguin92}}}
+%                 \icontag{\faGithub}{\href{https://github.com/molguin92}{\texttt{molguin92}}}
+%             \end{footnotesize}
+%         \end{center}
 
-    \end{frame}
-    \normalpage
+%     \end{frame}
+%     \normalpage
+% }
+
+% extend pgf-umlsd
+%% extension for pgf-umlsd v0.5 2009/09/30, which TeXLive comes along
+%% source: https://github.com/lyarbean/Tex-stuff
+
+%% \sidelabel{thread}{side}{label}
+%% side: left right above below
+\newcommand{\sidelabel}[3]{
+    \stepcounter{seqlevel}
+    \path
+    (#1)+(0.1,-\theseqlevel*\unitfactor-0.7*\unitfactor) node (messbeg) {};
+    \draw (messbeg) node[#2] {#3};
 }
+
+%% mostly used between altblocks
+%% \separateline[line style]{from}{to}
+\newcommand{\separateline}[3][dotted, color=black, very thick]{
+    \stepcounter{seqlevel}
+    \path
+    (#2)+(.1,-\theseqlevel*\unitfactor-.8*\unitfactor) node (from) {}
+    (#3)+(-.1,-\theseqlevel*\unitfactor-.8*\unitfactor) node (to) {};
+    \draw[#1] (from) -- (to);
+}
+
+%% \begin{altblock}{from}{condition}{to}
+%% %%calls here
+%% \end{altblock}
+\newenvironment{altblock}[3]{
+    \stepcounter{seqlevel}
+    \path
+    (#1)+(.1,-\theseqlevel*\unitfactor-\unitfactor) node (from) {}
+    (#3)+(-.1,-\theseqlevel*\unitfactor-\unitfactor) node (to) {};
+    \draw (from) node[above right] {[#2]};
+}{}
+
+%%
+%\newcommand{\postlevel}{\addtocounter{seqlevel}{+1}}
+
+%% \newthread[thread distance]{color fill style}{left}{right}
+% \renewcommand{\newthread}[4][1]{
+%     \newinst[#1]{#3}{#4}
+%     \stepcounter{threadnum}
+%     \node[below of=inst\theinstnum,node distance=1em] (thread\thethreadnum) {};
+%     \tikzstyle{threadcolor\thethreadnum}=[fill=#2]
+%     \tikzstyle{instcolor#3}=[fill=#2]
+% }
+

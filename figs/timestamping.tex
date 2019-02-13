@@ -1,0 +1,16 @@
+\begin{sequencediagram}
+    \newinst{client}{Client}
+    \newinst[2]{cloudlet}{Cloudlet}
+
+    \mess[1]{client}{Input $n$}{cloudlet}
+    \node[inner sep=0, left=.15em of mess from] (t0) {$T_{s}$};
+    \node[inner sep=0, right=.15em of mess to] (t1) {$T'_r$};
+
+
+    \postlevel%
+    \postlevel%
+    \mess[1]{cloudlet}{Reply $n$}{client}
+    \node[inner sep=0, right=.15em of mess from] (t3) {$T'_{s}$};
+    \node[inner sep=0, left=.15em of mess to] (t4) {$T_r$};
+
+\end{sequencediagram}

@@ -30,14 +30,29 @@
 \end{frame}
 
 \normalpage%
-\begin{frame}{Outline}
-    \tableofcontents[hideallsubsections]
+{
+    % within group to not have an outline for the first section
+    \AtBeginSection[]{}
+    \section{Introduction}
+}
+
+\begin{frame}{Introduction}
+    \note{Introduce human-in-the-loop and cognitive assistance}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \node [inner sep=0mm] (ironman) {\includegraphics[width=.8\linewidth]{img/ar_ironman.png}};
+
+            \path (ironman.east) -- coordinate[midway] (anchor) (ironman.south east);
+
+            \node [inner sep=0mm] (pokemongo) at (anchor)  {\includegraphics[width=.5\linewidth]{img/ar_pokemongo.jpg}};
+        \end{tikzpicture}
+    \end{center}
+    
 \end{frame}
 
-\section{Introduction \& Background}
-\subsection{Previous \& Related Work}
-\begin{frame}
-    \onslide<2->{\begin{columns}[onlytextwidth]
+\begin{frame}{Human-in-the-Loop Applications}
+    \begin{columns}[onlytextwidth]
         \begin{column}{.335\linewidth}%filler
         \end{column}%
         \begin{column}{.1\linewidth}
@@ -58,13 +73,11 @@
         \end{column}%
         \begin{column}{.335\linewidth}%filler
         \end{column}%
-    \end{columns}}%
+    \end{columns}%
     \begin{columns}[onlytextwidth]
         \begin{column}{.25\linewidth}
             \centering%
-            \onslide<3->{
-                \includegraphics[width=\linewidth]{img/glass_wearable.jpeg}\\
-            }
+            \includegraphics[width=\linewidth]{img/glass_wearable.jpeg}\\
         \end{column}
         \begin{column}{.5\linewidth}
             \centering
@@ -72,12 +85,10 @@
         \end{column}%
         \begin{column}{.25\linewidth}
             \centering%
-            \onslide<3->{
-                \includegraphics[width=\linewidth]{img/NN.png}\\
-            }
+            \includegraphics[width=\linewidth]{img/NN.png}\\
         \end{column}%
     \end{columns}%
-    \onslide<2->{\begin{columns}[onlytextwidth]
+    \begin{columns}[onlytextwidth]
         \begin{column}{.335\linewidth}%filler
         \end{column}%
         \begin{column}{.1\linewidth}
@@ -97,56 +108,73 @@
             \includegraphics[width=\linewidth]{img/vibration.png}
         \end{column}%
         \begin{column}{.335\linewidth}%filler
-        \end{column}}%
+        \end{column}%
     \end{columns}
 \end{frame}
 
-\subsection{Motivation}
-\begin{frame}{Motivation}
-    \begin{Large}
-        \centering%
-        Benchmarking human-in-the-loop applications is HARD\\
-    \end{Large}
-\end{frame}
-
-\begin{frame}{Motivation}
+\begin{frame}{Scaling}
     \begin{center}
-        \only<1>{\input{figs/humanintheloop.tex}}%
-        \only<2>{%
-            \input{figs/approach1.tex}%
-        }%
-        \only<3>{%
-            \input{figs/approach2.tex}%
-        }%
-        %\only<3>{%
-        %\input{}%
-        %}%
-        \onslide<2->{%
-            \\\vspace{.1\textheight}%
-            What if we could do away with the human user?%
-        }
+        \input{figs/humanintheloop.tex}\\% % change to image of scaling
+        \vspace{.1\textheight}%
+        No solution yet?
     \end{center}
 \end{frame}
 
-\subsection{Main Contributions}
-% TODO
+\begin{frame}{Our Contributions}
+    \begin{itemize}
+        \itemsep2em
+        \onslide<2->{\item A methodology for benchmarking human-in-the-loop applications.}
+        \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
+        \onslide<4->{\item A set of experiments and measurements which show the effectiveness of the approach.}
+    \end{itemize}
+\end{frame}
+
+\section{Background}
+\subsection{Previous \& Related Work}
+\begin{frame}{Previous \& Related Work}
+    
+\end{frame}
+
+
+\subsection{Motivation}
+
+\begin{frame}{Motivation}
+    \begin{center}
+        \only<1>{%
+            \input{figs/humanintheloop.tex}\\%
+        }%
+        \only<2>{%
+            \input{figs/approach1.tex}\\%
+        }%
+        \only<3>{%
+            \input{figs/approach2.tex}\\%
+        }%
+        \vspace{.1\textheight}%
+        \onslide<1>{%
+            Benchmarking human-in-the-loop applications is HARD!\\%
+        }%
+        \onslide<2->{%
+            What if we could do away with the human users?\\%
+        }%
+    \end{center}
+\end{frame}
 
 \section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
 \subsection{Approach}
 
-\begin{frame}{EdgeDroid: Idea}
+\begin{frame}{EdgeDroid: Requirements}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
             \begin{itemize}
                 \itemsep2em
                 \item Generate realistic, real-time inputs.
-                \onslide<2->{\begin{itemize}
-                    \item Trace of human-generated inputs.
-                \end{itemize}}
+                      \onslide<2->{\begin{itemize}
+                              \item Trace of human-generated inputs.
+                          \end{itemize}}
                 \item Correctly react to feedback.
-                \onslide<2->{\begin{itemize}
-                    \item Model of human interaction.
-                \end{itemize}}
+                      \onslide<2->{\begin{itemize}
+                              \item Model of human interaction.
+                          \end{itemize}}
             \end{itemize}
         \end{column}%
         \begin{column}{.5\linewidth}
@@ -165,6 +193,8 @@
 \begin{frame}{EdgeDroid: User Model}
     \begin{center}
         \input{figs/usermodel.tex}\\
+        \vspace{.1\textheight}%
+        \onslide<2->{Currently working on a more thorough characterization of human behavior.}
     \end{center}
 \end{frame}
 
@@ -175,11 +205,20 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{Timestamping}
+    \begin{center}
+        \input{figs/timestamping.tex}
+    \end{center}
+\end{frame}
+
+\subsection{Evaluation}
 \begin{frame}{Evaluation}
 
 \end{frame}
 
-\subsection{Evaluation}
 \section{Conclusions}
+\begin{frame}{Conclusions}
+    
+\end{frame}
 
 \end{document}

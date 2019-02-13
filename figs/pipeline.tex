@@ -1,0 +1,40 @@
+\begin{tikzpicture}[align=center,
+    %node styles:
+    block_center/.style ={rectangle, draw=black, thick, fill=white,
+            text width=6em, text centered, minimum height=4em},
+    block_rounded/.style ={rectangle, draw=black, thick, fill=white,
+            text width=6em, text centered, rounded corners=.55cm, minimum height=4em},
+    arrow/.style={draw, thick, -{Latex[length=2mm]}},
+    arrowr/.style={draw, thick, {Latex[length=2mm]}-}
+    ]
+
+    \matrix [column sep=10mm,row sep=3mm] (top) {
+        \node [block_center] (detect) {Detection};
+         & \node [block_center] (repr) {Symbolic\\Repr.};
+         & \node [block_center] (model) {Task Model\\$M\{S, E\}$};
+         & \node [block_center] (feedback) {Feedback\\Generation}; \\[3ex]
+    };
+
+    \matrix [column sep=10mm,row sep=3mm, below=3mm of top] (bottom) {
+        \node [block_rounded] (sensors) {On-body\\Sensors};
+         & \node[maninblack, minimum height=5em] (user) {\Large Human User};
+         & \node [block_rounded] (hud) {HUD, Speakers,\\etc.}; \\
+    };
+
+    %\Smiley[1, below of=bottom] (smiley);
+
+
+    \begin{scope}[every path/.style=arrow]
+        \path (detect) -- (repr);
+        \path (repr) -- (model);
+        \path (model) -- (feedback);
+        \path (feedback.south) |- (hud);
+        \path (hud) -- (hud -| user.east);
+        \path (sensors.west) -| (detect);
+    \end{scope}
+
+    \begin{scope}[every path/.style=arrowr]
+        \path (sensors) -- (sensors -| user.west);
+    \end{scope}
+
+\end{tikzpicture}
