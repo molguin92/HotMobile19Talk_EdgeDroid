@@ -52,6 +52,11 @@
 \end{frame}
 
 \begin{frame}{Cognitive Assistance}
+    \todo[inline]{Characterize Cognitive Assistance and Task Guidance?}
+\end{frame}
+
+\begin{frame}{Cognitive Assistance}
+    \todo[inline]{Move this?}
     \begin{columns}[onlytextwidth]
         \begin{column}{.335\linewidth}%filler
         \end{column}%
@@ -113,10 +118,11 @@
 \end{frame}
 
 \begin{frame}{Scaling}
+    \todo[inline]{Add images of more users}
     \begin{center}
         \input{figs/humanintheloop.tex}\\% % change to image of scaling
         \vspace{.1\textheight}%
-        No solution yet?
+        Human users make it hard to study scaling behavior.
     \end{center}
 \end{frame}
 
@@ -131,10 +137,11 @@
 
 \section{Background}
 \begin{ssframe}{Previous \& Related Work}
-    
+    \todo[inline] {References to previous work. Mention wearable cognitive assistance is prime candidate for Edge Computing}
 \end{ssframe}
 
 \begin{ssframe}{Motivation}
+    \todo[inline]{Add more users!}
     \begin{center}
         \only<1>{%
             \input{figs/humanintheloop.tex}\\%
@@ -161,14 +168,8 @@
         \begin{column}{.5\linewidth}
             \begin{itemize}
                 \itemsep2em
-                \item Generate realistic, real-time inputs.
-                      \onslide<2->{\begin{itemize}
-                              \item Trace of human-generated inputs.
-                          \end{itemize}}
-                \item Correctly react to feedback.
-                      \onslide<2->{\begin{itemize}
-                              \item Model of human interaction.
-                          \end{itemize}}
+                \item Generate realistic, high-dimensional, real-time inputs.
+                \item Correctly and realistically react to feedback.
             \end{itemize}
         \end{column}%
         \begin{column}{.5\linewidth}
@@ -178,13 +179,24 @@
     \end{columns}
 \end{ssframe}
 
-\begin{frame}{Tracing}
+\begin{frame}{Input Generation}
+    \begin{itemize}
+        \item Trace of human-generated inputs.
+    \end{itemize}
     \begin{center}
         \input{figs/tracing.tex}\\
     \end{center}
+    \todo[inline]{Add another figure showing usage of trace?}
 \end{frame}
 
-\begin{frame}{User Model}
+\begin{frame}{Trace-based approach: Issues}
+    \todo[inline]{Metion problems with pure trace-based approach: timing issues, unreliability of CV}
+\end{frame}
+
+\begin{frame}{Reaction to Feedback: User Model}
+    \begin{itemize}
+        \item Model of human interaction.
+    \end{itemize}
     \begin{center}
         \input{figs/usermodel.tex}\\
         \vspace{.1\textheight}%
@@ -225,16 +237,66 @@
 \end{frame}
 
 \begin{ssframe}{Evaluation}
-
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            \todo[inline]{Insert pictures of LEGO Assistant}
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            \centering%
+            \begin{tikzpicture}[grow'=right, font=\footnotesize]
+                \tikzset{level distance=6em, sibling distance=1em}
+                \tikzset{every tree node/.style={anchor=center}}
+                \Tree [.\node[] {\includegraphics[width=.1\linewidth]{img/symbols/tower}}; 
+                        \edge[] node[above, sloped] {Ethernet}; [.\node[] {\includegraphics[width=.1\linewidth]{img/symbols/router}};
+                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}}; 
+                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};
+                            \edge[color=white] node[midway, color=black, inner sep=0mm] {WiFi}; \node[inner sep=0mm] {};
+                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}}; 
+                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};  
+                ] ];
+            \end{tikzpicture}
+        \end{column}%
+    \end{columns}
 \end{ssframe}
+
+\begin{frame}{Results}
+    \begin{center}
+        \only<1>{%
+            \includegraphics[width=.7\linewidth]{plots/rtt_fb_vs_nofb.pdf}\\%
+        }%
+        \only<2>{%
+            \includegraphics[width=.7\linewidth]{plots/box_feedback.pdf}\\%
+        }%
+        \only<3>{%
+            \includegraphics[width=.7\linewidth]{plots/box_taskstep.pdf}\\%
+        }%
+    \end{center}
+\end{frame}
 
 \section{Conclusions}
 \begin{ssframe}{Future Work}
-    
-\end{ssframe}
+    \begin{itemize}
+        \itemsep2em
+        \item More accurate user model.
+        \item Expand to other types of Applications.
+    \end{itemize}
+\end{ssframe}\itemsep2em
 
-\begin{ssframe}{Closing remarks}
-    
+\begin{ssframe}{Summary}
+    \begin{itemize}
+        \itemsep2em
+        \item There's a need to study the scaling of Human-in-the-Loop applications.
+        \begin{itemize}
+            \item This is difficult due to human users.
+        \end{itemize}
+        \item We present a methodology + tool suite for benchmarking:
+        \begin{itemize}
+            \item \textbf{EdgeDroid}
+            \item Trace based.
+            \item Model of human behavior.
+        \end{itemize}
+        \item We present results which show the utility of EdgeDroid.
+    \end{itemize}
 \end{ssframe}
 
 \end{document}
