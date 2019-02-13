@@ -7,13 +7,14 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.14}
 \usepackage[export]{adjustbox}
+\usepackage{amsmath}
 
 % sequence diagrams
 \usepackage{pgf-umlsd}
 
 \usepackage{tikz}
 \usepackage{tikzpeople}
-\usetikzlibrary{shapes,arrows.meta,arrows,positioning,automata,matrix,shapes.symbols,shapes.misc,fit}
+\usetikzlibrary{shapes,arrows.meta,arrows,positioning,automata,matrix,shapes.symbols,shapes.misc,fit,intersections,pgfplots.fillbetween}
 
 \usepackage{libertine}
 \usepackage{sourcecodepro}
@@ -61,9 +62,16 @@
        \frametitle{Outline}
        \setcounter{tocdepth}{2}%
        \bfseries%
-       \tableofcontents[currentsection,hideallsubsections]
+       \tableofcontents[currentsection,hideothersubsections]
    \end{frame}
 }
+
+\newenvironment{ssframe}[1]{%
+   \subsection{#1}
+   \begin{frame}{#1}
+}{%
+   \end{frame}
+}%
 
 % \AtEndDocument%
 % {

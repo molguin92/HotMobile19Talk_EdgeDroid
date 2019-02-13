@@ -36,7 +36,7 @@
     \section{Introduction}
 }
 
-\begin{frame}{Introduction}
+\begin{frame}{Human-in-the-Loop Applications}
     \note{Introduce human-in-the-loop and cognitive assistance}
 
     \begin{center}
@@ -51,7 +51,7 @@
     
 \end{frame}
 
-\begin{frame}{Human-in-the-Loop Applications}
+\begin{frame}{Cognitive Assistance}
     \begin{columns}[onlytextwidth]
         \begin{column}{.335\linewidth}%filler
         \end{column}%
@@ -130,15 +130,11 @@
 \end{frame}
 
 \section{Background}
-\subsection{Previous \& Related Work}
-\begin{frame}{Previous \& Related Work}
+\begin{ssframe}{Previous \& Related Work}
     
-\end{frame}
+\end{ssframe}
 
-
-\subsection{Motivation}
-
-\begin{frame}{Motivation}
+\begin{ssframe}{Motivation}
     \begin{center}
         \only<1>{%
             \input{figs/humanintheloop.tex}\\%
@@ -157,12 +153,10 @@
             What if we could do away with the human users?\\%
         }%
     \end{center}
-\end{frame}
+\end{ssframe}
 
 \section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
-\subsection{Approach}
-
-\begin{frame}{EdgeDroid: Requirements}
+\begin{ssframe}{Requirements}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
             \begin{itemize}
@@ -182,15 +176,15 @@
             \includegraphics[width=.7\linewidth]{img/astromech.png}
         \end{column}
     \end{columns}
-\end{frame}
+\end{ssframe}
 
-\begin{frame}{EdgeDroid: Tracing}
+\begin{frame}{Tracing}
     \begin{center}
         \input{figs/tracing.tex}\\
     \end{center}
 \end{frame}
 
-\begin{frame}{EdgeDroid: User Model}
+\begin{frame}{User Model}
     \begin{center}
         \input{figs/usermodel.tex}\\
         \vspace{.1\textheight}%
@@ -198,27 +192,49 @@
     \end{center}
 \end{frame}
 
-\subsection{Implementation}
-\begin{frame}{Implementation}
+\begin{ssframe}{Implementation}
     \begin{center}
         \input{figs/architecture.tex}
     \end{center}
-\end{frame}
+\end{ssframe}
 
 \begin{frame}{Timestamping}
-    \begin{center}
-        \input{figs/timestamping.tex}
-    \end{center}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            \footnotesize%
+            \raggedright%
+            \input{figs/timestamping.tex}
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            Clocks are synchronized previous to the experiment.
+
+            \vspace{\baselineskip}%
+            Timestamps at key points to obtain:
+
+            \begin{align}
+                {\Delta}T_\text{up} &= t'_{r} - t_{s}\\
+                {\Delta}T_\text{proc} &= t'_{s} - t'_{r}\\
+                {\Delta}T_\text{down} &= t_{r} - t'_{s}
+            \end{align}
+        \end{column}%
+    \end{columns}
+    %\vspace{\baselineskip}%
+    \begin{align}
+        {\Delta}T_\text{total} &= {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
+    \end{align}
 \end{frame}
 
-\subsection{Evaluation}
-\begin{frame}{Evaluation}
+\begin{ssframe}{Evaluation}
 
-\end{frame}
+\end{ssframe}
 
 \section{Conclusions}
-\begin{frame}{Conclusions}
+\begin{ssframe}{Future Work}
     
-\end{frame}
+\end{ssframe}
+
+\begin{ssframe}{Closing remarks}
+    
+\end{ssframe}
 
 \end{document}

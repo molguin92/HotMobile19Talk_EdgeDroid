@@ -1,16 +1,67 @@
-\begin{sequencediagram}
-    \newinst{client}{Client}
-    \newinst[2]{cloudlet}{Cloudlet}
+{
+    \renewcommand{\mess}[4][0]{
+        \stepcounter{seqlevel}
+        \path
+        (#2)+(0,-\theseqlevel*\unitfactor-0.7*\unitfactor) node (mess from) {};
+        \addtocounter{seqlevel}{#1}
+        \path
+        (#4)+(0,-\theseqlevel*\unitfactor-0.7*\unitfactor) node (mess to) {};
+        \draw[-{Latex[length=1.5mm]},>=angle 60] (mess from) -- (mess to) node[midway, above]
+            {#3};
 
-    \mess[1]{client}{Input $n$}{cloudlet}
-    \node[inner sep=0, left=.15em of mess from] (t0) {$T_{s}$};
-    \node[inner sep=0, right=.15em of mess to] (t1) {$T'_r$};
+        \node (#3 from) at (mess from) {};
+        \node (#3 to) at (mess to) {};
+    }
 
+    \begin{sequencediagram}
+        \newinst{client}{Client}
+        \newinst[1]{cloudlet}{Cloudlet}
 
-    \postlevel%
-    \postlevel%
-    \mess[1]{cloudlet}{Reply $n$}{client}
-    \node[inner sep=0, right=.15em of mess from] (t3) {$T'_{s}$};
-    \node[inner sep=0, left=.15em of mess to] (t4) {$T_r$};
+        \mess[1]{client}{}{cloudlet}
+        \coordinate (csend) at (mess from);
+        \coordinate (srecv) at (mess to);
+        \coordinate (srecv_c) at (csend |- srecv);
+        \path [name path=inputmess] (mess from) -- (mess to);
 
-\end{sequencediagram}
+        \postlevel%
+        \postlevel%
+        \mess[1]{cloudlet}{}{client}
+        \coordinate (ssend) at (mess from);
+        \coordinate (crecv) at (mess to);
+        \coordinate (ssend_c) at (crecv |- ssend);
+        \path [name path=feedbackmess] (mess from) -- (mess to);
+
+        % labels
+        \node[inner sep=0mm, left=.15em of csend, anchor=base east] (csendlabel) {$t_s$}; % client send
+        \node[inner sep=0mm, right=.15em of srecv, anchor=base west] (srecvlabel) {$t'_r$}; % server recv
+        \node[inner sep=0mm, right=.15em of ssend, anchor=base west] (ssendlabel) {$t'_s$}; % server send
+        \node[inner sep=0mm, left=.15em of crecv, anchor=base east] (crecvlabel) {$t_r$}; % client recv
+        \path (csend) -- node[midway, above, sloped, anchor=south] {Input $n$} (srecv); % input
+        \path (ssend) -- node[midway, below, sloped, anchor=north] {Feedback $n$} (crecv); % reply
+
+        % dashed lines
+        \draw[name path=inputbound, dashed, color=white!50!black, line width=.1mm] (srecv) -- (srecv_c);
+        \draw[name path=feedbackbound, dashed, color=white!50!black, line width=.1mm] (ssend) -- (ssend_c);
+
+        % braces and their labels
+        \coordinate[left=.7em of csend] (a0);
+        \coordinate[left=.7em of srecv_c] (a1);
+        \node[fit=(a0) (a1), inner sep=0mm, left delimiter=\{] (uplink) {};
+
+        \coordinate[right=.7em of srecv] (a2);
+        \coordinate[right=.7em of ssend] (a3);
+        \node[fit=(a2) (a3), inner sep=0mm, right delimiter=\}] (processing) {};
+
+        \coordinate[left=.7em of ssend_c] (a4);
+        \coordinate[left=.7em of crecv] (a5);
+        \node[fit=(a4) (a5), inner sep=0mm, left delimiter=\{] (downlink) {};
+
+        \node[inner sep=0mm, left=1em of uplink, anchor=base east] (uplinklabel) {Uplink};
+        \node[inner sep=0mm, right=1em of processing, anchor=base west] (processinglabel) {Processing};
+        \node[inner sep=0mm, left=1em of downlink, anchor=base east] (downlinklabel) {Downlink};
+
+        % color fill
+        \tikzfillbetween[of=inputbound and feedbackbound] {black, opacity=0.1};
+
+    \end{sequencediagram}
+}
