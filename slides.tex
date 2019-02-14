@@ -82,9 +82,15 @@
 \end{frame}
 
 \section{Background}
-\begin{ssframe}{Previous \& Related Work}
-    \todo[inline] {References to previous work. Mention wearable cognitive assistance is prime candidate for Edge Computing}
-\end{ssframe}
+\begin{frame}{Previous \& Related Work}
+    \todo[inline]{split this up?}
+    \begin{itemize}
+        \itemsep1em
+        \item \ccite{Ha:TowardsWearableCogAssist}
+        \item \ccite{Chen:EarlyImplementation}
+        \item \ccite{Chen:AnEmpiricalStudyOfLatency}
+    \end{itemize}
+\end{frame}
 
 \begin{frame}{Our Contributions}
     \begin{itemize}
@@ -110,7 +116,7 @@
     \end{center}
 \end{frame}
 
-\begin{ssframe}{Approach: Motivation}
+\begin{frame}{Approach: Motivation}
     \begin{center}
         \only<1>{%
             \input{figs/humanintheloop.tex}\\%
@@ -129,7 +135,7 @@
             What if we could do away with the human users?\\%
         }%
     \end{center}
-\end{ssframe}
+\end{frame}
 
 \section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
 \begin{frame}{Requirements}
@@ -202,11 +208,11 @@
     \end{center}
 \end{frame}
 
-\begin{ssframe}{Implementation}
+\begin{frame}{Implementation}
     \begin{center}
         \input{figs/architecture.tex}
     \end{center}
-\end{ssframe}
+\end{frame}
 
 \begin{frame}{Timestamping}
     \begin{columns}[onlytextwidth]
@@ -234,7 +240,7 @@
     \end{align}
 \end{frame}
 
-\begin{ssframe}{Evaluation}
+\begin{frame}{Evaluation}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
             \todo[inline]{Insert pictures of LEGO Assistant}
@@ -255,7 +261,7 @@
             \end{tikzpicture}
         \end{column}%
     \end{columns}
-\end{ssframe}
+\end{frame}
 
 \begin{frame}{Results}
     \todo[inline]{Figure labels}
@@ -274,15 +280,15 @@
 \end{frame}
 
 \section{Conclusions}
-\begin{ssframe}{Future Work}
+\begin{frame}{Future Work}
     \begin{itemize}
         \itemsep2em
         \item More accurate user model.
         \item Expand to other types of Applications.
     \end{itemize}
-\end{ssframe}\itemsep2em
+\end{frame}\itemsep2em
 
-\begin{ssframe}{Summary}
+\begin{frame}{Summary}
     \begin{itemize}
         \itemsep2em
         \item There's a need to study the scaling of Human-in-the-Loop applications.
@@ -297,6 +303,6 @@
         \end{itemize}
         \item We present results which show the utility of EdgeDroid.
     \end{itemize}
-\end{ssframe}
+\end{frame}
 
 \end{document}
