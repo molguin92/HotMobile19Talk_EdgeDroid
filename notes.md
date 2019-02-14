@@ -43,3 +43,25 @@ slide 5:
 general approach (trace based)
 
 implementation
+
+################
+
+hitl will be become prolific
+dont explain jobs
+how do these applications interact with the infrastructure and each other?
+we need to understand and optimize these apps and the infrastructure.
+core question: which methodology can this optimization with done?
+what do these applications comprise
+we miss an efficient methodology
+
+high level (categories)
+people have been adressing
+prototypes
+latency studies
+maybe something third (analytical models)
+
+--> nobody has been adressing benchmarks
+
+merge work and contributions
+
+discuss approach then cognitive assistance
