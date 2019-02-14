@@ -1,0 +1,37 @@
+\begin{tikzpicture}[align=center,
+    arrow/.style={draw, very thick, line cap=round, -{Latex[length=2.5mm]}},
+    arrowr/.style={arrow, {Latex[length=2.5mm]}-},
+    userimg/.style={inner sep=0mm, label={\includegraphics[height=.07\textheight]{img/google-glass.png}}}]
+
+
+    \node [inner sep=0pt] (user) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
+    \node [inner sep=0pt, below=4em of user] (server) {\includegraphics[height=.2\textheight]{img/server.png}};
+    
+    \matrix [inner sep=0mm, column sep=1mm, row sep=1mm, left=1em of user, visible on= <2->] (ml) {
+        \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; \\
+        \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; \\
+        \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; \\
+    };
+
+    \matrix [inner sep=0mm, column sep=1mm, row sep=1mm, right=1em of user, visible on= <2->] (mr) {
+        \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; \\
+        \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; \\
+        \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; & \node[userimg] {}; \\
+    };
+
+    \draw[arrow] (server.100) -- (server.100 |- user.south);
+    \draw[arrowr] (server.80) -- (server.80 |- user.south);
+
+    \draw[arrow, visible on= <2->] (server.170) -| (ml.280);
+    \draw[arrow, visible on= <2->] (ml.260) |- (server.190);
+
+    \draw[arrow, visible on= <2->] (server.10) -| (mr.260);
+    \draw[arrow, visible on= <2->] (mr.280) |- (server.350);
+
+    % big dollar signs
+
+    \node[inner sep=0mm, anchor=center, visible on= <3->] at (user.center) {\includegraphics[height=.15\textheight]{img/dollar.png}}; 
+    \node[inner sep=0mm, anchor=center, visible on= <3->] at (ml.center) {\includegraphics[height=.15\textheight]{img/dollar.png}};
+    \node[inner sep=0mm, anchor=center, visible on= <3->] at (mr.center) {\includegraphics[height=.15\textheight]{img/dollar.png}};
+
+\end{tikzpicture}
