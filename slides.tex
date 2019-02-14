@@ -36,33 +36,56 @@
     \section{Introduction}
 }
 
+\begin{frame}{}
+    \begin{center}
+        \input{figs/humanintheloop_intro.tex}\\
+    \end{center}
+\end{frame}
+
 \begin{frame}{Human-in-the-Loop Applications}
-    \note{Introduce human-in-the-loop and cognitive assistance}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            $\left.
+            \begin{tabular}{p{.85\linewidth}}
+                \begin{itemize}
+                    \itemsep2em
+                    \item Application Developers
+                    \onslide<2->{\begin{itemize}
+                        \item Debugging
+                        \item Resource Consumption
+                        \item Performance and Optimization
+                    \end{itemize}}
+                    \item Infrastructure Providers
+                    \onslide<3->{\begin{itemize}
+                        \item Performance and Optimization
+                        \item Scaling
+                    \end{itemize}}
+                    \item Researchers
+                \end{itemize}
+            \end{tabular}
+            \right\}$
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \centering\Large\bfseries%
+            \onslide<4->{How to obtain these measurements?}
+        \end{column}
+    \end{columns}
+    \todo[inline]{Too much text?}
+\end{frame}
 
+\begin{frame}{Studying Human-in-the-Loop Applications}
+    \todo[inline]{Add more humans.}
     \begin{center}
-        \begin{tikzpicture}
-            \node [inner sep=0mm] (ironman) {\includegraphics[width=.8\linewidth]{img/ar_ironman.png}};
-
-            \path (ironman.east) -- coordinate[midway] (anchor) (ironman.south east);
-
-            \node [inner sep=0mm] (pokemongo) at (anchor)  {\includegraphics[width=.5\linewidth]{img/ar_pokemongo.jpg}};
-        \end{tikzpicture}
-    \end{center}
-    
-\end{frame}
-
-\begin{frame}{Cognitive Assistance}
-    \todo[inline]{Characterize Cognitive Assistance and Task Guidance?}
-\end{frame}
-
-\begin{frame}{Scaling}
-    \todo[inline]{Add images of more users}
-    \begin{center}
-        \input{figs/humanintheloop.tex}\\% % change to image of scaling
-        \vspace{.1\textheight}%
-        Human users make it hard to study scaling behavior.
+        \input{figs/humanintheloop.tex}\\
+        \vspace{2em}%
+        \onslide<2->{\Large Costly and not repeatable!}\\
     \end{center}
 \end{frame}
+
+\section{Background}
+\begin{ssframe}{Previous \& Related Work}
+    \todo[inline] {References to previous work. Mention wearable cognitive assistance is prime candidate for Edge Computing}
+\end{ssframe}
 
 \begin{frame}{Our Contributions}
     \begin{itemize}
@@ -73,75 +96,22 @@
     \end{itemize}
 \end{frame}
 
-\section{Background}
-\begin{ssframe}{Previous \& Related Work}
-    \todo[inline] {References to previous work. Mention wearable cognitive assistance is prime candidate for Edge Computing}
-\end{ssframe}
-
-\begin{frame}{Cognitive Assistance}
-    \todo[inline]{Move this?}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.335\linewidth}%filler
-        \end{column}%
-        \begin{column}{.1\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/sound_wave.png}
-        \end{column}%
-        \begin{column}{.01\linewidth}
-        \end{column}%
-        \begin{column}{.1\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/film.png}
-        \end{column}%
-        \begin{column}{.01\linewidth}
-        \end{column}%
-        \begin{column}{.1\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/accel.png}
-        \end{column}%
-        \begin{column}{.335\linewidth}%filler
-        \end{column}%
-    \end{columns}%
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.25\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/glass_wearable.jpeg}\\
-        \end{column}
-        \begin{column}{.5\linewidth}
-            \centering
-            \input{figs/humanintheloop.tex}%
-        \end{column}%
-        \begin{column}{.25\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/NN.png}\\
-        \end{column}%
-    \end{columns}%
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.335\linewidth}%filler
-        \end{column}%
-        \begin{column}{.1\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/sound_wave.png}
-        \end{column}%
-        \begin{column}{.01\linewidth}
-        \end{column}%
-        \begin{column}{.1\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/film.png}
-        \end{column}%
-        \begin{column}{.01\linewidth}
-        \end{column}%
-        \begin{column}{.1\linewidth}
-            \centering%
-            \includegraphics[width=\linewidth]{img/vibration.png}
-        \end{column}%
-        \begin{column}{.335\linewidth}%filler
-        \end{column}%
-    \end{columns}
+\begin{frame}{Task-guidance Cognitive Assistance}
+    \todo[inline]{Some image of task guidance}
+    \begin{center}
+        \footnotesize%
+        \input{figs/pipeline.tex}\\
+    \end{center}
 \end{frame}
 
-\begin{ssframe}{Motivation}
-    \todo[inline]{Add more users!}
+\begin{frame}{The Task Model}
+    \begin{center}
+        \footnotesize%
+        \input{figs/taskmodel.tex}\\
+    \end{center}
+\end{frame}
+
+\begin{ssframe}{Approach: Motivation}
     \begin{center}
         \only<1>{%
             \input{figs/humanintheloop.tex}\\%
@@ -154,7 +124,7 @@
         }%
         \vspace{.1\textheight}%
         \only<1>{%
-            Benchmarking human-in-the-loop applications is HARD!\\%
+            Benchmarking human-in-the-loop applications is HARD\\%
         }%
         \only<2->{%
             What if we could do away with the human users?\\%
@@ -163,21 +133,27 @@
 \end{ssframe}
 
 \section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
-\begin{ssframe}{Requirements}
+\begin{frame}{Requirements}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
-            \begin{itemize}
-                \itemsep2em
-                \item Generate realistic, high-dimensional, real-time inputs.
-                \item Correctly and realistically react to feedback.
-            \end{itemize}
+            $\left.
+            \begin{tabular}{p{.8\linewidth}}
+                \begin{itemize}
+                    \itemsep2em
+                    \item Generate realistic, high-dimensional, real-time inputs.
+                    \item Correctly and realistically react to feedback.
+                    \item KPI: Delays.
+                \end{itemize}
+            \end{tabular}%
+            \right\}$
         \end{column}%
         \begin{column}{.5\linewidth}
             \centering%
-            \includegraphics[width=.7\linewidth]{img/astromech.png}
+            \Large\bfseries%
+            \onslide<2->{Trace of pre-recorded inputs}\\
         \end{column}
     \end{columns}
-\end{ssframe}
+\end{frame}
 
 \begin{frame}{Input Generation}
     \begin{itemize}
@@ -191,6 +167,29 @@
 
 \begin{frame}{Trace-based approach: Issues}
     \todo[inline]{Metion problems with pure trace-based approach: timing issues, unreliability of CV}
+\end{frame}
+
+\begin{frame}{Requirements}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            $\left.
+            \begin{tabular}{p{.8\linewidth}}
+                \begin{itemize}
+                    \itemsep2em
+                    \item Generate realistic, high-dimensional, real-time inputs.
+                    \item Correctly and realistically react to feedback.
+                    \item KPI: Delays.
+                \end{itemize}
+            \end{tabular}%
+            \right\}$
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            \centering%
+            \Large\bfseries%
+            Trace of pre-recorded inputs\\
+            \textcolor{red}{\& a model of user behavior}\\
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Reaction to Feedback: User Model}

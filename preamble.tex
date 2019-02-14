@@ -57,21 +57,21 @@
 
 %% TOC before each section
 
-\AtBeginSection[]
-{
-   \begin{frame}<beamer>
-       \frametitle{Outline}
-       \setcounter{tocdepth}{2}%
-       \bfseries%
-       \tableofcontents[currentsection,hideothersubsections]
-   \end{frame}
-}
+% \AtBeginSection[]
+% {
+%     \begin{frame}<beamer>
+%         \frametitle{Outline}
+%         \setcounter{tocdepth}{2}%
+%         \bfseries%
+%         \tableofcontents[currentsection,hideothersubsections]
+%     \end{frame}
+% }
 
 \newenvironment{ssframe}[1]{%
-   \subsection{#1}
-   \begin{frame}{#1}
-}{%
-   \end{frame}
+    \subsection{#1}
+    \begin{frame}{#1}
+        }{%
+    \end{frame}
 }%
 
 % \AtEndDocument%
@@ -139,4 +139,12 @@
 %     \tikzstyle{threadcolor\thethreadnum}=[fill=#2]
 %     \tikzstyle{instcolor#3}=[fill=#2]
 % }
+
+\tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+            \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+        },
+}
 

@@ -8,16 +8,16 @@
     arrowr/.style={draw, thick, {Latex[length=2mm]}-}
     ]
 
-    \matrix [column sep=10mm,row sep=3mm] (top) {
+    \matrix [column sep=10mm,row sep=3mm, inner sep=0mm] (top) {
         \node [block_center] (detect) {Detection};
          & \node [block_center] (repr) {Symbolic\\Repr.};
          & \node [block_center] (model) {Task Model\\$M\{S, E\}$};
          & \node [block_center] (feedback) {Feedback\\Generation}; \\[3ex]
     };
 
-    \matrix [column sep=10mm,row sep=3mm, below=3mm of top] (bottom) {
+    \matrix [column sep=10mm,row sep=3mm, below=1mm of top, inner sep=0mm] (bottom) {
         \node [block_rounded] (sensors) {On-body\\Sensors};
-         & \node[maninblack, minimum height=5em] (user) {\Large Human User};
+         & \node[maninblack, minimum height=5em] (user) {Human User};
          & \node [block_rounded] (hud) {HUD, Speakers,\\etc.}; \\
     };
 
