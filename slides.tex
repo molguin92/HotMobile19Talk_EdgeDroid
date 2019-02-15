@@ -42,79 +42,90 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Human-in-the-Loop Applications}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.5\linewidth}
-            $\left.
-            \begin{tabular}{p{.85\linewidth}}
-                \begin{itemize}
-                    \itemsep2em
-                    \item Application Developers
-                    \onslide<2->{\begin{itemize}
-                        \item Debugging
-                        \item Resource Consumption
-                        \item Performance and Optimization
-                    \end{itemize}}
-                    \item Infrastructure Providers
-                    \onslide<3->{\begin{itemize}
-                        \item Performance and Optimization
-                        \item Scaling
-                    \end{itemize}}
-                    \item Researchers
-                \end{itemize}
-            \end{tabular}
-            \right\}$
-        \end{column}
-        \begin{column}{.5\linewidth}
-            \centering\Large\bfseries%
-            \onslide<4->{How to obtain these measurements?}
-        \end{column}
-    \end{columns}
-    \todo[inline]{Too much text?}
-\end{frame}
+% \begin{frame}{Human-in-the-Loop Applications}
+%     \begin{columns}[onlytextwidth]
+%         \begin{column}{.5\linewidth}
+%             $\left.
+%             \begin{tabular}{p{.85\linewidth}}
+%                 \begin{itemize}
+%                     \itemsep2em
+%                     \item Application Developers
+%                     \onslide<2->{\begin{itemize}
+%                         \item Debugging
+%                         \item Resource Consumption
+%                         \item Performance and Optimization
+%                     \end{itemize}}
+%                     \item Infrastructure Providers
+%                     \onslide<3->{\begin{itemize}
+%                         \item Performance and Optimization
+%                         \item Scaling
+%                     \end{itemize}}
+%                     \item Researchers
+%                 \end{itemize}
+%             \end{tabular}
+%             \right\}$
+%         \end{column}
+%         \begin{column}{.5\linewidth}
+%             \centering\Large\bfseries%
+%             \onslide<4->{How to obtain these measurements?}
+%         \end{column}
+%     \end{columns}
+%     \todo[inline]{Too much text?}
+% \end{frame}
 
 \begin{frame}{Studying Human-in-the-Loop Applications}
+    Need to understand and optimize these applications:% and the underlying infrastructure:
+    \begin{itemize}
+        \item How do they interact with each other?
+        \item How do they interact with infrastructure?
+        \item How do they scale?
+    \end{itemize}%
+    \vspace{1em}%
     \begin{center}
-        \input{figs/humanintheloop_study.tex}\\
+        {\Large With which methodology can we study these behaviors?}\\
         \vspace{2em}%
+        \input{figs/humanintheloop_study.tex}\\
         \onslide<3->{\Large\bfseries\color{red} Costly}\onslide<4->{\Large\bfseries\color{red}, poor repeatability\\}
     \end{center}
 \end{frame}
 
 \section{Background}
-\begin{frame}{Previous \& Related Work}
-    \todo[inline]{split this up?}
-    \begin{itemize}
-        \itemsep1em
-        \item \ccite{Ha:TowardsWearableCogAssist}
-        \item \ccite{Chen:EarlyImplementation}
-        \item \ccite{Chen:AnEmpiricalStudyOfLatency}
-    \end{itemize}
+\begin{frame}[t]{Previous \& Related Work}
+    \begin{columns}[onlytextwidth,]
+        \begin{column}{.33\linewidth}
+            \begin{center}
+                \Large%
+                Prototypes
+            \end{center}
+        \end{column}%
+        \begin{column}{.33\linewidth}
+            \begin{center}
+                \Large%
+                Latencies
+            \end{center}
+        \end{column}%
+        \begin{column}{.33\linewidth}
+            \begin{center}
+                \Large%
+                Modeling
+            \end{center}
+        \end{column}%
+    \end{columns}
+    \begin{block}{Our Contributions}
+        \begin{itemize}
+            \onslide<2->{\item A methodology for benchmarking human-in-the-loop applications.}
+            \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
+            \onslide<4->{\item Experiments and measurements which show the effectiveness of the approach.}
+        \end{itemize}
+    \end{block}
 \end{frame}
 
-\begin{frame}{Our Contributions}
-    \begin{itemize}
-        \itemsep2em
-        \onslide<2->{\item A methodology for benchmarking human-in-the-loop applications.}
-        \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
-        \onslide<4->{\item A set of experiments and measurements which show the effectiveness of the approach.}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Task-guidance Cognitive Assistance}
-    \todo[inline]{Some image of task guidance}
-    \begin{center}
-        \footnotesize%
-        \input{figs/pipeline.tex}\\
-    \end{center}
-\end{frame}
-
-\begin{frame}{The Task Model}
-    \begin{center}
-        \footnotesize%
-        \input{figs/taskmodel.tex}\\
-    \end{center}
-\end{frame}
+% \begin{frame}{The Task Model}
+%     \begin{center}
+%         \footnotesize%
+%         \input{figs/taskmodel.tex}\\
+%     \end{center}
+% \end{frame}
 
 \begin{frame}{Approach: Motivation}
     \begin{center}
@@ -137,7 +148,16 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{Task-guidance Cognitive Assistance}
+    \todo[inline]{Some image of task guidance}
+    \begin{center}
+        \footnotesize%
+        \input{figs/pipeline.tex}\\
+    \end{center}
+\end{frame}
+
 \section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
+
 \begin{frame}{Requirements}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
@@ -155,56 +175,29 @@
         \begin{column}{.5\linewidth}
             \centering%
             \Large\bfseries%
-            \onslide<2->{Trace of pre-recorded inputs}\\
+            \onslide<2->{Trace of pre-recorded inputs\\
+            \& a model of user behavior\\}
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Input Generation}
-    \begin{itemize}
-        \item Trace of human-generated inputs.
-    \end{itemize}
+\begin{frame}{Tracing}
     \begin{center}
         \input{figs/tracing.tex}\\
     \end{center}
-    \todo[inline]{Add another figure showing usage of trace?}
 \end{frame}
 
-\begin{frame}{Trace-based approach: Issues}
-    \todo[inline]{Metion problems with pure trace-based approach: timing issues, unreliability of CV}
-\end{frame}
-
-\begin{frame}{Requirements}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.5\linewidth}
-            $\left.
-            \begin{tabular}{p{.8\linewidth}}
-                \begin{itemize}
-                    \itemsep2em
-                    \item Generate realistic, high-dimensional, real-time inputs.
-                    \item Correctly and realistically react to feedback.
-                    \item KPI: Delays.
-                \end{itemize}
-            \end{tabular}%
-            \right\}$
-        \end{column}%
-        \begin{column}{.5\linewidth}
-            \centering%
-            \Large\bfseries%
-            Trace of pre-recorded inputs\\
-            \textcolor{red}{\& a model of user behavior}\\
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Reaction to Feedback: User Model}
-    \begin{itemize}
-        \item Model of human interaction.
-    \end{itemize}
+\begin{frame}{User Model}
     \begin{center}
         \input{figs/usermodel.tex}\\
         \vspace{.1\textheight}%
         \onslide<2->{Currently working on a more thorough characterization of human behavior.}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Trace Replay}
+    \begin{center}
+        \input{figs/replay.tex}\\
     \end{center}
 \end{frame}
 
