@@ -120,31 +120,17 @@
     \end{block}
 \end{frame}
 
-% \begin{frame}{The Task Model}
-%     \begin{center}
-%         \footnotesize%
-%         \input{figs/taskmodel.tex}\\
-%     \end{center}
-% \end{frame}
+\section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
 
-\begin{frame}{Approach: Motivation}
+\begin{frame}{Approach}
     \begin{center}
-        \only<1>{%
-            \input{figs/humanintheloop.tex}\\%
-        }%
-        \only<2>{%
-            \input{figs/approach1.tex}\\%
-        }%
-        \only<3>{%
-            \input{figs/approach2.tex}\\%
-        }%
+        \input{figs/approach.tex}\\%
         \vspace{.1\textheight}%
         \only<1>{%
             Benchmarking human-in-the-loop applications is HARD\\%
         }%
-        \only<2->{%
-            What if we could do away with the human users?\\%
-        }%
+        \only<2->{What if we could do away with the human users?\\}%
+        \onslide<3->{\bfseries\color{red}Repeatable, scalable!\\}%
     \end{center}
 \end{frame}
 
@@ -156,37 +142,6 @@
     \end{center}
 \end{frame}
 
-\section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
-
-\begin{frame}{Requirements}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.5\linewidth}
-            $\left.
-            \begin{tabular}{p{.8\linewidth}}
-                \begin{itemize}
-                    \itemsep2em
-                    \item Generate realistic, high-dimensional, real-time inputs.
-                    \item Correctly and realistically react to feedback.
-                    \item KPI: Delays.
-                \end{itemize}
-            \end{tabular}%
-            \right\}$
-        \end{column}%
-        \begin{column}{.5\linewidth}
-            \centering%
-            \Large\bfseries%
-            \onslide<2->{Trace of pre-recorded inputs\\
-            \& a model of user behavior\\}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Tracing}
-    \begin{center}
-        \input{figs/tracing.tex}\\
-    \end{center}
-\end{frame}
-
 \begin{frame}{User Model}
     \begin{center}
         \input{figs/usermodel.tex}\\
@@ -195,42 +150,10 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Trace Replay}
-    \begin{center}
-        \input{figs/replay.tex}\\
-    \end{center}
-\end{frame}
-
 \begin{frame}{Implementation}
     \begin{center}
         \input{figs/architecture.tex}
     \end{center}
-\end{frame}
-
-\begin{frame}{Timestamping}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.5\linewidth}
-            \footnotesize%
-            \raggedright%
-            \input{figs/timestamping.tex}
-        \end{column}%
-        \begin{column}{.5\linewidth}
-            Clocks are synchronized previous to the experiment.
-
-            \vspace{\baselineskip}%
-            Timestamps at key points to obtain:
-
-            \begin{align}
-                {\Delta}T_\text{up} &= t'_{r} - t_{s}\\
-                {\Delta}T_\text{proc} &= t'_{s} - t'_{r}\\
-                {\Delta}T_\text{down} &= t_{r} - t'_{s}
-            \end{align}
-        \end{column}%
-    \end{columns}
-    %\vspace{\baselineskip}%
-    \begin{align}
-        {\Delta}T_\text{total} &= {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
-    \end{align}
 \end{frame}
 
 \begin{frame}{Evaluation}
@@ -296,6 +219,73 @@
         \end{itemize}
         \item We present results which show the utility of EdgeDroid.
     \end{itemize}
+\end{frame}
+
+\startpage
+\section{Extra Slides}
+\begin{frame}{}
+\end{frame}
+
+\normalpage
+\begin{frame}{Requirements}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            $\left.
+            \begin{tabular}{p{.8\linewidth}}
+                \begin{itemize}
+                    \itemsep2em
+                    \item Generate realistic, high-dimensional, real-time inputs.
+                    \item Correctly and realistically react to feedback.
+                    \item KPI: Delays.
+                \end{itemize}
+            \end{tabular}%
+            \right\}$
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            \centering%
+            \Large\bfseries%
+            Trace of pre-recorded inputs\\
+            \& a model of user behavior\\
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Tracing}
+    \begin{center}
+        \input{figs/tracing.tex}\\
+    \end{center}
+\end{frame}
+
+\begin{frame}{Trace Replay}
+    \begin{center}
+        \input{figs/replay.tex}\\
+    \end{center}
+\end{frame}
+
+\begin{frame}{Timestamping}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            \footnotesize%
+            \raggedright%
+            \input{figs/timestamping.tex}
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            Clocks are synchronized previous to the experiment.
+
+            \vspace{\baselineskip}%
+            Timestamps at key points to obtain:
+
+            \begin{align}
+                {\Delta}T_\text{up} &= t'_{r} - t_{s}\\
+                {\Delta}T_\text{proc} &= t'_{s} - t'_{r}\\
+                {\Delta}T_\text{down} &= t_{r} - t'_{s}
+            \end{align}
+        \end{column}%
+    \end{columns}
+    %\vspace{\baselineskip}%
+    \begin{align}
+        {\Delta}T_\text{total} &= {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
+    \end{align}
 \end{frame}
 
 \end{document}
