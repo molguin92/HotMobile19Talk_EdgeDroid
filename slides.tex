@@ -115,13 +115,13 @@
         \input{figs/relatedwork.tex}\\
     \end{center}
     \onslide<2->{%
-    \begin{block}{Our Contributions}
-        \begin{itemize}
-            \item A methodology for benchmarking human-in-the-loop applications.
-            \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
-            \onslide<4->{\item Experiments and measurements which show the effectiveness of the approach.}
-        \end{itemize}
-    \end{block}%
+        \begin{block}{Our Contributions}
+            \begin{itemize}
+                \item A methodology for benchmarking human-in-the-loop applications.
+                      \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
+                      \onslide<4->{\item Experiments and measurements which show the effectiveness of the approach.}
+            \end{itemize}
+        \end{block}%
     }
 \end{frame}
 
@@ -136,6 +136,7 @@
         }%
         \only<2->{What if we could do away with the human users?\\}%
         \onslide<3->{\bfseries\color{red}Repeatable, scalable!\\}%
+        \onslide<4->{\vspace{.05\textheight}Key question: Credibility.\\}
     \end{center}
 \end{frame}
 
@@ -165,6 +166,41 @@
 
 \begin{frame}{Evaluation}
     \begin{columns}[onlytextwidth]
+        \begin{column}{.5\textwidth}
+            \begin{center}
+                \textbf{Key purpose:}\\
+                Demonstrate utility of EdgeDroid.\\
+            \end{center}
+            \vspace{.1\textheight}
+            \begin{block}{Scenarios}
+                \begin{itemize}
+                    \item \emph{Optimal} scenarios with 1, 5 and 10 devices.
+                    \item Weakened wireless link with 10 devices.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \begin{table}[]
+                \centering%
+                \footnotesize%
+                \caption{Latency bounds (\textcite{Chen:AnEmpiricalStudyOfLatency}).}%
+                \label{my-label}%
+                \resizebox{.7\textwidth}{!}{%
+                    \begin{tabular}{@{}ll@{}}
+                        \toprule
+                        Latency {[}ms{]} & Quality   \\ \midrule
+                        $< 600$                 & Excellent \\
+                        $600-2700$              & Impaired  \\
+                        $> 2700$                & Unusable  \\ \bottomrule
+                    \end{tabular}%
+                }
+            \end{table}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Evaluation Setup}
+    \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
             \todo[inline]{Insert pictures of LEGO Assistant}
         \end{column}%
@@ -173,13 +209,13 @@
             \begin{tikzpicture}[grow'=right, font=\footnotesize]
                 \tikzset{level distance=6em, sibling distance=1em}
                 \tikzset{every tree node/.style={anchor=center}}
-                \Tree [.\node[] {\includegraphics[width=.1\linewidth]{img/symbols/tower}}; 
-                        \edge[] node[above, sloped] {Ethernet}; [.\node[] {\includegraphics[width=.1\linewidth]{img/symbols/router}};
-                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}}; 
-                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};
-                            \edge[color=white] node[midway, color=black, inner sep=0mm] {WiFi}; \node[inner sep=0mm] {};
-                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}}; 
-                            \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};  
+                \Tree [.\node[] {\includegraphics[width=.1\linewidth]{img/symbols/tower}};
+                \edge[] node[above, sloped] {Ethernet}; [.\node[] {\includegraphics[width=.1\linewidth]{img/symbols/router}};
+                \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};
+                \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};
+                \edge[color=white] node[midway, color=black, inner sep=0mm] {WiFi}; \node[inner sep=0mm] {};
+                \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};
+                \edge[dashed]; \node[] {\includegraphics[width=.1\linewidth]{img/symbols/cellphone}};
                 ] ];
             \end{tikzpicture}
         \end{column}%
@@ -216,15 +252,15 @@
         \begin{itemize}
             \itemsep1em
             \item There's a need to study the scaling of Human-in-the-Loop applications.
-            \begin{itemize}
-                \item This is difficult due to human users.
-            \end{itemize}
+                  \begin{itemize}
+                      \item This is difficult due to human users.
+                  \end{itemize}
             \item We present a methodology + tool suite for benchmarking:
-            \begin{itemize}
-                \item \textbf{EdgeDroid}
-                \item Trace based.
-                \item Model of human behavior.
-            \end{itemize}
+                  \begin{itemize}
+                      \item \textbf{EdgeDroid}
+                      \item Trace based.
+                      \item Model of human behavior.
+                  \end{itemize}
             \item We present results which show the utility of EdgeDroid.
         \end{itemize}
     \end{block}
@@ -240,15 +276,15 @@
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
             $\left.
-            \begin{tabular}{p{.8\linewidth}}
-                \begin{itemize}
-                    \itemsep2em
-                    \item Generate realistic, high-dimensional, real-time inputs.
-                    \item Correctly and realistically react to feedback.
-                    \item KPI: Delays.
-                \end{itemize}
-            \end{tabular}%
-            \right\}$
+                \begin{tabular}{p{.8\linewidth}}
+                    \begin{itemize}
+                        \itemsep2em
+                        \item Generate realistic, high-dimensional, real-time inputs.
+                        \item Correctly and realistically react to feedback.
+                        \item KPI: Delays.
+                    \end{itemize}
+                \end{tabular}%
+                \right\}$
         \end{column}%
         \begin{column}{.5\linewidth}
             \centering%
@@ -285,15 +321,15 @@
             Timestamps at key points to obtain:
 
             \begin{align}
-                {\Delta}T_\text{up} &= t'_{r} - t_{s}\\
-                {\Delta}T_\text{proc} &= t'_{s} - t'_{r}\\
-                {\Delta}T_\text{down} &= t_{r} - t'_{s}
+                {\Delta}T_\text{up}   & = t'_{r} - t_{s}  \\
+                {\Delta}T_\text{proc} & = t'_{s} - t'_{r} \\
+                {\Delta}T_\text{down} & = t_{r} - t'_{s}
             \end{align}
         \end{column}%
     \end{columns}
     %\vspace{\baselineskip}%
     \begin{align}
-        {\Delta}T_\text{total} &= {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
+        {\Delta}T_\text{total} & = {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
     \end{align}
 \end{frame}
 
