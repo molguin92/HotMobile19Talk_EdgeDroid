@@ -1,9 +1,9 @@
-\begin{tikzpicture}[align=center,
+\begin{tikzpicture}[align=center, font=\tiny\bfseries,
     %node styles:
     block_center/.style ={rectangle, draw=black, thick, fill=white,
-            text width=6em, text centered, minimum height=4em},
-    block_rounded/.style ={rectangle, draw=black, thick, fill=white,
-            text width=6em, text centered, rounded corners=.55cm, minimum height=4em},
+            text width=6em, text centered, minimum height=2em, inner sep=1mm},
+    block_rounded/.style ={rectangle, draw=black, thick, fill=white, inner sep=1mm,
+            text width=6em, text centered, rounded corners=.55cm, minimum height=2em},
     arrow/.style={draw, thick, -{Latex[length=2mm]}},
     arrowr/.style={draw, thick, {Latex[length=2mm]}-}
     ]
@@ -17,7 +17,7 @@
 
     \matrix [column sep=10mm,row sep=3mm, below=1mm of top, inner sep=0mm] (bottom) {
         \node [block_rounded] (sensors) {On-body\\Sensors};
-         & \node[maninblack, minimum height=5em] (user) {Human User};
+         & \node[maninblack, minimum height=4em] (user) {Human User};
          & \node [block_rounded] (hud) {HUD, Speakers,\\etc.}; \\
     };
 

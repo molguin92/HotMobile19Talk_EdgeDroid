@@ -91,33 +91,38 @@
 
 \section{Background}
 \begin{frame}[t]{Previous \& Related Work}
-    \begin{columns}[onlytextwidth,]
-        \begin{column}{.33\linewidth}
-            \begin{center}
-                \Large%
-                Prototypes
-            \end{center}
-        \end{column}%
-        \begin{column}{.33\linewidth}
-            \begin{center}
-                \Large%
-                Latencies
-            \end{center}
-        \end{column}%
-        \begin{column}{.33\linewidth}
-            \begin{center}
-                \Large%
-                Modeling
-            \end{center}
-        \end{column}%
-    \end{columns}
+    % \begin{columns}[onlytextwidth,]
+    %     \begin{column}{.33\linewidth}
+    %         \begin{center}
+    %             \Large%
+    %             Prototypes
+    %         \end{center}
+    %     \end{column}%
+    %     \begin{column}{.33\linewidth}
+    %         \begin{center}
+    %             \Large%
+    %             Latencies
+    %         \end{center}
+    %     \end{column}%
+    %     \begin{column}{.33\linewidth}
+    %         \begin{center}
+    %             \Large%
+    %             Modeling
+    %         \end{center}
+    %     \end{column}%
+    % \end{columns}
+    \begin{center}
+        \input{figs/relatedwork.tex}\\
+    \end{center}
+    \onslide<2->{%
     \begin{block}{Our Contributions}
         \begin{itemize}
-            \onslide<2->{\item A methodology for benchmarking human-in-the-loop applications.}
+            \item A methodology for benchmarking human-in-the-loop applications.
             \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
             \onslide<4->{\item Experiments and measurements which show the effectiveness of the approach.}
         \end{itemize}
-    \end{block}
+    \end{block}%
+    }
 \end{frame}
 
 \section{EdgeDroid: Experimentally Benchmarking Human-in-the-Loop}
@@ -135,10 +140,10 @@
 \end{frame}
 
 \begin{frame}{Task-guidance Cognitive Assistance}
-    \todo[inline]{Some image of task guidance: ``put the blue lego on top of the red one''}
     \begin{center}
-        \footnotesize%
-        \input{figs/pipeline.tex}\\
+        \input{figs/taskguidance.tex}\\
+        \vspace{.2\textheight}%
+        \input{figs/pipeline.tex}\\%
     \end{center}
 \end{frame}
 
@@ -286,6 +291,11 @@
     \begin{align}
         {\Delta}T_\text{total} &= {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
     \end{align}
+\end{frame}
+
+\begin{frame}[allowframebreaks, t]{References}
+    \nocite{*}
+    \printbibliography%
 \end{frame}
 
 \end{document}
