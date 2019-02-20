@@ -12,7 +12,7 @@
     \node[below=7em of center] (glass) {\includegraphics[height=.2\textheight]{img/glass_wearable.jpeg}};
 
 
-    \path[draw, -{Latex[length=2mm]}, visible on= <2->]
+    \path[draw, -{Latex[length=2mm]}, very thick, visible on= <2->]
     (user) edge [out=45, in=135] node[above] {Sensory Input} (server)
     (server) edge [out=225, in=315] node[below] {Human-parseable\\Feedback} (user);
 \end{tikzpicture}
