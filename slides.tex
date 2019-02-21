@@ -202,7 +202,18 @@
 \begin{frame}{Evaluation Setup}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
-            \todo[inline]{Insert pictures of LEGO Assistant}
+            \begin{block}{Application}
+                \begin{center}
+                    \includegraphics[width=.7\linewidth]{img/lego/img3.jpeg}
+                    
+                    LEGO Assistant
+                \end{center}
+                \begin{itemize}
+                    \itemsep1em
+                    \item 7 steps
+                    \item 2 min average duration
+                \end{itemize}
+            \end{block}%
         \end{column}%
         \begin{column}{.5\linewidth}
             \centering%
@@ -223,16 +234,17 @@
 \end{frame}
 
 \begin{frame}{Results}
-    \todo[inline]{Figure labels}
     \begin{center}
         \only<1>{%
+            Inputs that triggered a state change vs. inputs that did not.\\
             \includegraphics[width=.7\linewidth]{plots/rtt_fb_vs_nofb.pdf}\\%
-            \todo[inline]{I haven't explained the task model, maybe skip this graph?}
         }%
         \only<2>{%
+            RTT by pipeline segments.\\
             \includegraphics[width=.7\linewidth]{plots/box_feedback.pdf}\\%
         }%
         \only<3>{%
+            RTT by task step.\\
             \includegraphics[width=.7\linewidth]{plots/box_taskstep.pdf}\\%
         }%
     \end{center}
