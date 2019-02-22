@@ -18,7 +18,6 @@
 \usetikzlibrary{shapes,arrows.meta,arrows,positioning,automata,matrix,shapes.symbols,shapes.misc,fit,intersections,pgfplots.fillbetween}
 
 \usepackage{libertine}
-\usepackage{sourcecodepro}
 \usepackage{fontawesome}
 
 \usepackage{todonotes}
@@ -35,9 +34,9 @@
 
 %\usepackage[hidelinks]{hyperref}
 
-\newcommand{\emailref}[1]{\href{mailto:#1}{\texttt{#1}}}
-\newcommand{\telref}[1]{\href{tel:#1}{\texttt{#1}}}
-\newcommand{\urlref}[1]{\href{#1}{\texttt{#1}}}
+\newcommand{\emailref}[1]{\href{mailto:#1}{\underline{\smash{#1}}}}
+\newcommand{\telref}[1]{\href{tel:#1}{\underline{\smash{#1}}}}
+\newcommand{\urlref}[1]{\href{#1}{\underline{\smash{#1}}}}
 
 \usepackage[style=ieee,
     backend=bibtex,

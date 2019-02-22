@@ -85,32 +85,13 @@
         {\Large With which methodology can we study these behaviors?}\\
         \vspace{2em}%
         \input{figs/humanintheloop_study.tex}\\
-        \onslide<3->{\Large\bfseries\color{red} Costly}\onslide<4->{\Large\bfseries\color{red}, poor repeatability\\}
+        \Large\bfseries\color{red}\onslide<3->{Costly}\onslide<4->{, poor repeatability\\}
+        \onslide<5->{Require IRB approval!\\}
     \end{center}
 \end{frame}
 
 \section{Background}
 \begin{frame}{Previous \& Related Work}
-    % \begin{columns}[onlytextwidth,]
-    %     \begin{column}{.33\linewidth}
-    %         \begin{center}
-    %             \Large%
-    %             Prototypes
-    %         \end{center}
-    %     \end{column}%
-    %     \begin{column}{.33\linewidth}
-    %         \begin{center}
-    %             \Large%
-    %             Latencies
-    %         \end{center}
-    %     \end{column}%
-    %     \begin{column}{.33\linewidth}
-    %         \begin{center}
-    %             \Large%
-    %             Modeling
-    %         \end{center}
-    %     \end{column}%
-    % \end{columns}
     \begin{center}
         \input{figs/relatedwork.tex}\\
     \end{center}
@@ -135,12 +116,12 @@
             Benchmarking human-in-the-loop applications is HARD\\%
         }%
         \only<2->{What if we could do away with the human users?\\}%
-        \onslide<3->{\bfseries\color{red}Repeatable, scalable!\\}%
+        \onslide<3->{\bfseries\color{red}Repeatable, scalable, no IRB!\\}%
         \onslide<4->{\vspace{.05\textheight}Key question: Credibility.\\}
     \end{center}
 \end{frame}
 
-\begin{frame}{Task-guidance Wearable Cognitive Assistance\ \autocite{Ha:TowardsWearableCogAssist}}
+\begin{frame}{Example: Task Guidance WCA\ \autocite{Ha:TowardsWearableCogAssist}}
     \begin{center}
         \input{figs/taskguidance.tex}\\
         \vspace{.2\textheight}%
@@ -152,7 +133,7 @@
     \begin{center}
         \input{figs/usermodel.tex}\\
         \vspace{.1\textheight}%
-        \onslide<2->{Currently working on a more thorough characterization of human behavior.}
+        \onslide<2->{Future work: more elaborate models.}
     \end{center}
 \end{frame}
 
@@ -165,58 +146,44 @@
 \end{frame}
 
 \begin{frame}{Evaluation}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.5\textwidth}
-            \begin{center}
-                \textbf{Key purpose:}\\
-                Demonstrate utility of EdgeDroid.\\
-            \end{center}
-            \vspace{.1\textheight}
-            \begin{block}{Scenarios}
-                \begin{itemize}
-                    \item \emph{Optimal} scenarios with 1, 5 and 10 devices.
-                    \item Weakened wireless link with 10 devices.
-                \end{itemize}
-            \end{block}
-        \end{column}
-        \begin{column}{.5\textwidth}
-            \begin{table}[]
-                \centering%
-                \footnotesize%
-                \caption{Latency bounds (\textcite{Chen:AnEmpiricalStudyOfLatency}).}%
-                \label{my-label}%
-                \resizebox{.7\textwidth}{!}{%
-                    \begin{tabular}{@{}ll@{}}
-                        \toprule
-                        Latency {[}ms{]} & Quality   \\ \midrule
-                        $< 600$                 & Excellent \\
-                        $600-2700$              & Impaired  \\
-                        $> 2700$                & Unusable  \\ \bottomrule
-                    \end{tabular}%
-                }
-            \end{table}
-        \end{column}
-    \end{columns}
+    \begin{center}
+        \Large%
+        \textbf{Key purpose:}\\
+        Demonstrate utility of EdgeDroid.\\
+    \end{center}
+    \vspace{.1\textheight}
+    \begin{table}[]
+        \centering%
+        \footnotesize%
+        \caption{Latency bounds (\textcite{Chen:AnEmpiricalStudyOfLatency}).}%
+        \label{my-label}%
+        \begin{tabular}{@{}ll@{}}
+            \toprule
+            Latency {[}ms{]} & Quality   \\ \midrule
+            $< 600$          & Excellent \\
+            $600-2700$       & Impaired  \\
+            $> 2700$         & Unusable  \\ \bottomrule
+        \end{tabular}%
+    \end{table}
 \end{frame}
 
-\begin{frame}{Evaluation Setup}
+\begin{frame}{Evaluation: Setup}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
-            \begin{block}{Application}
+            \begin{block}{Application \& Scenarios}
                 \begin{center}
                     \includegraphics[width=.7\linewidth]{img/lego/img3.jpeg}
-                    
+
                     LEGO Assistant
                 \end{center}
                 \begin{itemize}
-                    \itemsep1em
-                    \item 7 steps
-                    \item 2 min average duration
+                    \item Three \emph{optimal} scenarios with 1, 5 and 10 devices.
+                    \item Weakened wireless link with 10 devices.
                 \end{itemize}
             \end{block}%
         \end{column}%
         \begin{column}{.5\linewidth}
-            \centering%
+            \raggedleft%
             \begin{tikzpicture}[grow'=right, font=\footnotesize]
                 \tikzset{level distance=6em, sibling distance=1em}
                 \tikzset{every tree node/.style={anchor=center}}
@@ -279,11 +246,26 @@
 \end{frame}
 
 \startpage
-\section{Extra Slides}
 \begin{frame}{}
+    \begin{center}
+        \textbf{\Large Thank you.}\\
+        \vspace{.1\textheight}%
+        \begin{block}{\footnotesize Contact}
+            \tiny%
+            \textbf{Manuel Olguín Muñoz}\\
+            Division of Information Science and Engineering\\
+            KTH EECS\\
+            Malvinas väg 10, 100-44 Stockholm, SWEDEN\\
+            \vspace{.01\textheight}
+            Email: \emailref{molguin@kth.se}\\
+            Website: \urlref{https://olguin.se}\\
+        \end{block}
+    \end{center}
+    \vspace{.1\textheight}%
 \end{frame}
 
 \normalpage
+\section{Extra Slides}
 \begin{frame}{Requirements}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}
