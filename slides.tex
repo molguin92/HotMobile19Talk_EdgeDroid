@@ -151,20 +151,6 @@
         \textbf{Key purpose:}\\
         Demonstrate utility of EdgeDroid.\\
     \end{center}
-    \vspace{.1\textheight}
-    \begin{table}[]
-        \centering%
-        \footnotesize%
-        \caption{Latency bounds (\textcite{Chen:AnEmpiricalStudyOfLatency}).}%
-        \label{my-label}%
-        \begin{tabular}{@{}ll@{}}
-            \toprule
-            Latency {[}ms{]} & Quality   \\ \midrule
-            $< 600$          & Excellent \\
-            $600-2700$       & Impaired  \\
-            $> 2700$         & Unusable  \\ \bottomrule
-        \end{tabular}%
-    \end{table}
 \end{frame}
 
 \begin{frame}{Evaluation: Setup}
@@ -201,20 +187,41 @@
 \end{frame}
 
 \begin{frame}{Results}
-    \begin{center}
-        \only<1>{%
-            Inputs that triggered a state change vs. inputs that did not.\\
-            \includegraphics[width=.7\linewidth]{plots/rtt_fb_vs_nofb.pdf}\\%
-        }%
-        \only<2>{%
-            RTT by pipeline segments.\\
-            \includegraphics[width=.7\linewidth]{plots/box_feedback.pdf}\\%
-        }%
-        \only<3>{%
-            RTT by task step.\\
-            \includegraphics[width=.7\linewidth]{plots/box_taskstep.pdf}\\%
-        }%
-    \end{center}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.6\textwidth}
+            \begin{center}
+                \only<1>{%
+                    State change vs. no state change.\\
+                    \includegraphics[width=.9\linewidth]{plots/rtt_fb_vs_nofb.pdf}\\%
+                }%
+                \only<2>{%
+                    RTT by pipeline segments.\\
+                    \includegraphics[width=.9\linewidth]{plots/box_feedback.pdf}\\%
+                }%
+                \only<3>{%
+                    RTT by task step.\\
+                    \includegraphics[width=.9\linewidth]{plots/box_taskstep.pdf}\\%
+                }%
+            \end{center}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            \begin{center}
+                Reference latency bounds\\(\textcite{Chen:AnEmpiricalStudyOfLatency}).
+            \begin{table}[]
+                \centering%
+                \footnotesize%
+                \label{my-label}%
+                \begin{tabular}{@{}ll@{}}
+                    \toprule
+                    Latency {[}ms{]} & Quality   \\ \midrule
+                    $< 600$          & Excellent \\
+                    $600-2700$       & Impaired  \\
+                    $> 2700$         & Unusable  \\ \bottomrule
+                \end{tabular}%
+            \end{table}
+            \end{center}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \section{Conclusions}
