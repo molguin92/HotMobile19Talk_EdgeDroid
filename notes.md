@@ -65,3 +65,45 @@ maybe something third (analytical models)
 merge work and contributions
 
 discuss approach then cognitive assistance
+
+# comments
+
+slide numbers
+Trace-based system is non-trivial, why is it non-trivial?
+Trace timing interacts with system.
+Don't call model simplistic, talk about straightforward.
+Don't call it user model task-state model, sufficient for this task, don't downplay it.
+
+fundamental exciting new wave of applications
+no apologetic tone
+we have an idealized user, real users get annoyed and so on, this is not captured and that's why there's future work.
+this whole task was about a droid, what if this droid could become more human
+change trace icon
+
+talk about what the trace is, talk about segmentation
+
+talk more about comparisons, on an optimal system you get '1 Client'
+what matters is the upper bound of the system performance
+imagine how hard these results would have been to collect with real users
+what is the right edge computing infrastructure?
+
+define RTT
+reference latency bounds for LEGO
+clarify that they come from Zhuo's thesis
+clarify that latencies are for end of step to beginning of next one
+
+clarify that we want to measure latencies under load
+re-cut slides
+cut implementation 
+cut user model
+
+use lego as a running example
+
+merge results into 1/2 slides
+
+key question: credibility
+
+remove 'IRB free'
+avoids the complexity of human subjects research
+
+change from Results to Use Cases or Example Use of EdgeDroid
