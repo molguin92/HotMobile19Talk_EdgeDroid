@@ -17,8 +17,7 @@
         \vspace{0.02\textheight}
         {\footnotesize \underline{M. Olguín Muñoz}\kthaffil, J. Wang\cmuaffil, M. Satyanarayanan\cmuaffil and J. Gross\kthaffil\\
             \vspace{0.02\textheight}
-            \kthaffil~KTH Royal Institute of Technology\\
-            \cmuaffil~Carnegie Mellon University\\}
+            \kthaffil~KTH Royal Institute of Technology, Sweden\hspace{.1\linewidth}\cmuaffil~Carnegie Mellon University\\}
     \end{center}
 
     \vspace{0.04\textheight}
@@ -79,6 +78,7 @@
         \item How do they interact with each other?
         \item How do they interact with infrastructure?
         \item How do they scale?
+        \item KPI: Delays, Round-Trip Times (RTTs).
     \end{itemize}%
     \vspace{1em}%
     \begin{center}
@@ -86,7 +86,7 @@
         \vspace{2em}%
         \input{figs/humanintheloop_study.tex}\\
         \Large\bfseries\color{red}\onslide<3->{Costly}\onslide<4->{, poor repeatability\\}
-        \onslide<5->{Require IRB approval!\\}
+        %\onslide<5->{Require IRB approval!\\}
     \end{center}
 \end{frame}
 
@@ -116,8 +116,14 @@
             Benchmarking human-in-the-loop applications is HARD\\%
         }%
         \only<2->{What if we could do away with the human users?\\}%
-        \onslide<3->{\bfseries\color{red}Repeatable, scalable, no IRB!\\}%
-        \onslide<4->{\vspace{.05\textheight}Key question: Credibility.\\}
+        \onslide<3->{\bfseries\color{red}Repeatable, scalable!\\}%
+        %\onslide<4->{\vspace{.05\textheight}Key question: Credibility.\\}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Tracing}
+    \begin{center}
+        \input{figs/tracing.tex}\\
     \end{center}
 \end{frame}
 
@@ -126,22 +132,6 @@
         \input{figs/taskguidance.tex}\\
         \vspace{.2\textheight}%
         \input{figs/pipeline.tex}\\%
-    \end{center}
-\end{frame}
-
-\begin{frame}{User Model}
-    \begin{center}
-        \input{figs/usermodel.tex}\\
-        \vspace{.1\textheight}%
-        \onslide<2->{Future work: more elaborate models.}
-    \end{center}
-\end{frame}
-
-\begin{frame}{Implementation}
-    \begin{center}
-        \input{figs/architecture.tex}\\
-        \vspace{.1\textheight}
-        \icontag{\faGithub}{\footnotesize\urlref{https://github.com/molguin92/EdgeDroid}}
     \end{center}
 \end{frame}
 
@@ -186,42 +176,10 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Results}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.6\textwidth}
-            \begin{center}
-                \only<1>{%
-                    State change vs. no state change.\\
-                    \includegraphics[width=.9\linewidth]{plots/rtt_fb_vs_nofb.pdf}\\%
-                }%
-                \only<2>{%
-                    RTT by pipeline segments.\\
-                    \includegraphics[width=.9\linewidth]{plots/box_feedback.pdf}\\%
-                }%
-                \only<3>{%
-                    RTT by task step.\\
-                    \includegraphics[width=.9\linewidth]{plots/box_taskstep.pdf}\\%
-                }%
-            \end{center}
-        \end{column}
-        \begin{column}{.4\textwidth}
-            \begin{center}
-                Reference latency bounds\\(\textcite{Chen:AnEmpiricalStudyOfLatency}).
-            \begin{table}[]
-                \centering%
-                \footnotesize%
-                \label{my-label}%
-                \begin{tabular}{@{}ll@{}}
-                    \toprule
-                    Latency {[}ms{]} & Quality   \\ \midrule
-                    $< 600$          & Excellent \\
-                    $600-2700$       & Impaired  \\
-                    $> 2700$         & Unusable  \\ \bottomrule
-                \end{tabular}%
-            \end{table}
-            \end{center}
-        \end{column}
-    \end{columns}
+\begin{frame}{Use Cases}
+    \begin{center}
+        \input{figs/usecases.tex}\\
+    \end{center}
 \end{frame}
 
 \section{Conclusions}
@@ -296,9 +254,19 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Tracing}
+\begin{frame}{User Model}
     \begin{center}
-        \input{figs/tracing.tex}\\
+        \input{figs/usermodel.tex}\\
+        \vspace{.1\textheight}%
+        \onslide<2->{Future work: more elaborate models.}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Implementation}
+    \begin{center}
+        \input{figs/architecture.tex}\\
+        \vspace{.1\textheight}
+        \icontag{\faGithub}{\footnotesize\urlref{https://github.com/molguin92/EdgeDroid}}
     \end{center}
 \end{frame}
 
