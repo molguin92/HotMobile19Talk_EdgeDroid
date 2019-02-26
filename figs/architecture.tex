@@ -1,4 +1,4 @@
-\begin{tikzpicture}[align=center,
+\begin{tikzpicture}[align=center, font={\footnotesize},
     arrow/.style={draw, thick, -{Latex[length=2mm]}},
     arrowr/.style={draw, thick, {Latex[length=2mm]}-},
     parallelogram/.style={trapezium,trapezium left angle=70,trapezium right angle=-70}]
@@ -12,7 +12,7 @@
     \begin{pgfonlayer}{foreground}
         \matrix[column sep=40mm, row sep=2mm, inner sep=2mm,
         every node/.style={text width=4em, text centered, minimum width=5em}] (mtx) {
-            \node[draw, dashed, rectangle, anchor=center, inner sep=2mm, ] (usermodel) {User Model};
+            \node[dashed, draw, rectangle, anchor=center, inner sep=2mm, ] (usermodel) {``User''\\Model}; 
             & \node[draw, dashed, rectangle, anchor=center, inner sep=2mm] (app_backend) {App Backend};\\
 
             \node[inner sep=0mm] {}; %spacer
@@ -22,8 +22,8 @@
             \node[inner sep=0mm, minimum height=1.5em] {};
             & \node[inner sep=0mm, minimum height=1.5em] {}; \\
 
-            \node[anchor=center, inner sep=2mm, minimum height=5em] (emulator) {Client Emulator};
-            & \node[anchor=center, inner sep=2mm, minimum height=5em] (control) {Control Backend};\\
+            \node[anchor=center, inner sep=2mm, minimum height=5em] (emulator) {Client Emulator\\Java 1.8};
+            & \node[anchor=center, inner sep=2mm, minimum height=5em] (control) {Control Backend\\Python 3.6};\\
 
             % spacers
             \node[inner sep=0mm, minimum height=.5em] {};
@@ -54,8 +54,8 @@
 
     \begin{pgfonlayer}{foreground}
         % primary labels
-        \node[inner sep=2mm, above] at (android.south) {Android\\Device};
-        \node[inner sep=2mm, above] at (cloudlet.south) {Cloudlet};
+        \node[inner sep=2mm, above] at (android.south) {Android\\6.0+};
+        \node[inner sep=2mm, above] at (cloudlet.south) {Cloudlet\\Linux v4.13.0+};
 
 
         % arrows
@@ -68,8 +68,8 @@
         \draw[arrow] (fit_control.85) -- node[right] {\footnotesize Execution Control} (fit_control.85 |- fit3.south);
 
         % between app and user model
-        \coordinate (a1) at (app_backend.160 -| fit3.west);
-        \coordinate (a2) at (app_backend.200 -| fit3.west);
+        \coordinate (a1) at (app_backend.165 -| fit3.west);
+        \coordinate (a2) at (app_backend.195 -| fit3.west);
         \coordinate (b1) at (a1 -| fit1.east);
         \coordinate (b2) at (a2 -| fit1.east);
 

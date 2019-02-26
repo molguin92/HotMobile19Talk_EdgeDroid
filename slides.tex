@@ -147,13 +147,21 @@
     \onslide<2->{\begin{block}{Our Approach}
             \begin{itemize}
                 \item Segment trace into logical ``steps''.
-                \item Control replay of steps through a parameterizable model of the task.
-                \item Future work: replace with model of user behavior.
+                \item Controlled replay of steps.
+                %\item Future work: model of user behavior.
             \end{itemize}
         \end{block}
         \begin{center}
             \input{figs/replay.tex}\\
         \end{center}}
+\end{frame}
+
+\begin{frame}{Implementation}
+    \begin{center}
+        \input{figs/architecture.tex}\\
+        \vspace{.1\textheight}
+        \Large\icontag{\faGithub}{\urlref{https://github.com/molguin92/EdgeDroid}}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Evaluation}
@@ -208,26 +216,24 @@
 \begin{frame}{Conclusions}
     \begin{block}{Future Work}
         \begin{itemize}
-            \itemsep1em
-            \item More accurate user model.
-            \item Expand to other types of Applications.
+            \item User Model.
+            \item Other types of Applications.
         \end{itemize}
     \end{block}
 
     \begin{block}{Summary}
         \begin{itemize}
-            \itemsep1em
-            \item There's a need to study the scaling of Human-in-the-Loop applications.
+            \item Need to study the scaling of Human-in-the-Loop applications.
                   \begin{itemize}
-                      \item This is difficult due to human users.
+                      \item Difficult due to human users.
                   \end{itemize}
-            \item We present a methodology + tool suite for benchmarking:
+            \item Methodology + tool suite for benchmarking:
                   \begin{itemize}
                       \item \textbf{EdgeDroid}
                       \item Trace based.
                       \item Model of human behavior.
                   \end{itemize}
-            \item We present results which show the utility of EdgeDroid.
+            \item Results which show the utility of EdgeDroid.
         \end{itemize}
     \end{block}
 \end{frame}
@@ -281,14 +287,6 @@
         \input{figs/usermodel.tex}\\
         \vspace{.1\textheight}%
         Future work: more elaborate models.
-    \end{center}
-\end{frame}
-
-\begin{frame}{Implementation}
-    \begin{center}
-        \input{figs/architecture.tex}\\
-        \vspace{.1\textheight}
-        \icontag{\faGithub}{\footnotesize\urlref{https://github.com/molguin92/EdgeDroid}}
     \end{center}
 \end{frame}
 
