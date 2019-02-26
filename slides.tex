@@ -137,6 +137,25 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{Trace Replay}
+    \begin{block}{Non-trivial Challenge}
+        \begin{itemize}
+            \item Changes in system responsiveness require adapting trace.
+            \item System delays affect user behavior as well.
+        \end{itemize}
+    \end{block}
+    \begin{block}{Our Approach}
+        \begin{itemize}
+            \item Segment trace into logical ``steps''.
+            \item Control replay of steps through a parameterizable model of the task.
+            \item Future work: replace with model of user behavior.
+        \end{itemize}
+    \end{block}
+    \begin{center}
+        \input{figs/replay.tex}\\
+    \end{center}
+\end{frame}
+
 \begin{frame}{Evaluation}
     \begin{center}
         \Large%
@@ -260,7 +279,7 @@
     \begin{center}
         \input{figs/usermodel.tex}\\
         \vspace{.1\textheight}%
-        \onslide<2->{Future work: more elaborate models.}
+        Future work: more elaborate models.
     \end{center}
 \end{frame}
 
@@ -269,12 +288,6 @@
         \input{figs/architecture.tex}\\
         \vspace{.1\textheight}
         \icontag{\faGithub}{\footnotesize\urlref{https://github.com/molguin92/EdgeDroid}}
-    \end{center}
-\end{frame}
-
-\begin{frame}{Trace Replay}
-    \begin{center}
-        \input{figs/replay.tex}\\
     \end{center}
 \end{frame}
 
