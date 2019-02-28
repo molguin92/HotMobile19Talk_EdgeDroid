@@ -1,4 +1,4 @@
-\documentclass[aspectratio=1610]{beamer}
+\documentclass[aspectratio=1610, notes]{beamer}
 \usetheme{KTH}
 \input{preamble.tex}
 
@@ -34,6 +34,12 @@
         \raggedleft%
         \emph{HotMobile'19 Session 5: February 28\textsuperscript{th} 2019, Santa Cruz, CA}\\
     \end{tiny}
+    \note{
+        \begin{itemize}
+            \item Name all authors
+            \item Mention Sweden 
+        \end{itemize}   
+    }
 \end{frame}
 
 \normalpage%
@@ -44,6 +50,14 @@
     \begin{center}
         \input{figs/humanintheloop_intro.tex}\\
     \end{center}
+    \note{
+        \begin{itemize}
+            \item Exciting new applications which integrate with the real world and the users.
+            \item Put the human in a feedback loop.
+            \item High dimensional, context-aware inputs.
+            \item High dimensional, human-parseable outputs. 
+        \end{itemize}   
+    }
 \end{frame}
 
 \begin{frame}{Studying Human-in-the-Loop Applications}
@@ -62,6 +76,13 @@
         \Large\bfseries\color{red}\onslide<3->{Costly}\onslide<4->{, poor repeatability\\}
         %\onslide<5->{Require IRB approval!\\}
     \end{center}
+    \note{
+        \begin{itemize}
+            \item Apps are starting to proliferate.
+            \item They are interesting for developers, users, training, live assistance, etc.
+            \item We still don't know much. 
+        \end{itemize}   
+    }
 \end{frame}
 
 \subsection{Background}
@@ -92,6 +113,13 @@
         \onslide<3->{\bfseries\color{red}Repeatable, scalable!\\}%
         %\onslide<4->{\vspace{.05\textheight}Key question: Credibility.\\}
     \end{center}
+    \note{
+        \begin{itemize}
+            \item Hard because of humans.
+            \item Trace-based approach with a ``user model'' which modulates the replay of the trace.
+            \item I will explain ``user model'' in the next slides using an example.
+        \end{itemize}   
+    }
 \end{frame}
 
 \begin{frame}{Example: Task Guidance Wearable Cognitive Assitance, LEGO\ \autocite{Ha:TowardsWearableCogAssist}}
@@ -100,6 +128,14 @@
         %\vspace{.2\textheight}%
         %\input{figs/pipeline.tex}\\%
     \end{center}
+    \note{
+        \begin{itemize}
+            \item Running example.
+            \item Explain LEGO step by step. Captures video and gives feedback instructions.
+            \item Don't say it was created at CMU.
+            \item Usable simple example for initial implementation because of Linear model.
+        \end{itemize}   
+    }
 \end{frame}
 
 \begin{frame}{Tracing}
@@ -108,6 +144,13 @@
         \vspace{.1\textheight}%
         \input{figs/trace.tex}\\
     \end{center}
+    \note{
+        \begin{itemize}
+            \item First step in our approach is tracing.
+            \item Trace raw inputs.
+            \item Example: LEGO -> video frames.
+        \end{itemize}   
+    }
 \end{frame}
 
 \begin{frame}{Trace Replay}
@@ -127,6 +170,13 @@
         \begin{center}
             \input{figs/replay.tex}\\
         \end{center}}
+        \note{
+        \begin{itemize}
+            \item Merely replaying trace is not enough.
+            \item What happens if the responsiveness of the system changes?
+            \item Need a way to adapt the trace to system conditions.
+        \end{itemize}   
+    }
 \end{frame}
 
 \subsection{Implementation: EdgeDroid}
@@ -136,6 +186,12 @@
         \vspace{.1\textheight}
         \Large\icontag{\faGithub}{\urlref{https://github.com/molguin92/EdgeDroid}}
     \end{center}
+    \note{
+        \begin{itemize}
+            \item Very short about implementation. 
+            \item Remind that we don't emulate backend or network.
+        \end{itemize}   
+    }
 \end{frame}
 
 \section{Evaluation}
@@ -179,12 +235,24 @@
             \end{tikzpicture}
         \end{column}%
     \end{columns}
+    \note{
+        \begin{itemize}
+            \item Use example of app developer and system designer to exemplify results.
+        \end{itemize}   
+    }
 \end{frame}
 
 \begin{frame}{Use Cases}
     \begin{center}
         \input{figs/usecases.tex}\\
     \end{center}
+    \note{
+        \begin{itemize}
+            \item Use example of app developer and system designer to exemplify results.
+            \item Important aspect is that these results are repeatable and automatically obtained.
+            \item Did not have to train 10 users.
+        \end{itemize}   
+    }
 \end{frame}
 
 \section{Conclusions}
@@ -211,6 +279,12 @@
             \item Results which show the utility of EdgeDroid.
         \end{itemize}
     \end{block}
+    \note{
+        \begin{itemize}
+            \item Talk about future model of human behavior.
+            \item Expand to other types of applications that are not task-based.
+        \end{itemize}   
+    }
 \end{frame}
 
 \startpage
