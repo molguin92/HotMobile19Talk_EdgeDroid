@@ -1,0 +1,19 @@
+\begin{tikzpicture}[align=center]
+    \node[inner sep=0, rectangle] (user) {\includegraphics[width=.35\linewidth]{img/ar_glasses.png}};
+
+    \matrix[inner sep=0mm, 
+    left=2em of user, row sep=1em,
+    nodes={rectangle, draw, text width=8em, rectangle, draw, inner sep=2mm}] (lmtx) {%
+        \node (performance) {Task performance};\\
+        \node (errors) {\# of Errors};\\
+        \node (time) {Task completion time};\\
+    };
+
+    \matrix[inner sep=0mm, 
+    right=2em of user, row sep=1em,
+    nodes={rectangle, draw, text width=8em, rectangle, draw, inner sep=2mm}] (rmtx) {%
+        \node (confusion) {Confusion};\\
+        \node (annoyance) {Annoyance};\\
+        \node (Fatigue) {Fatigue};\\
+    };
+\end{tikzpicture}

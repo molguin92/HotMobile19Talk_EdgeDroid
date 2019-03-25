@@ -38,12 +38,24 @@
     \note{
         \begin{itemize}
             \item Name all authors
-            \item Mention Sweden 
-        \end{itemize}   
+            \item Mention Sweden
+        \end{itemize}
     }
 \end{frame}
 
 \normalpage%
+
+\begin{frame}
+    \begin{block}{Acknowledgements}
+        Part of an ongoing collaboration with the Elijah Group at Carnegie Mellon University, led by Prof. Mahadev Satyanarayanan.\\
+        \vspace{3em}
+        \begin{center}
+            \includegraphics[width=.7\linewidth]{img/cmu_csd.png}\\
+        \end{center}
+        \vspace{3em}
+        This work was recently presented at HotMobile'19~\autocite{Olguin:EdgeDroid2019}.
+    \end{block}
+\end{frame}
 
 
 \section{Introduction}
@@ -56,8 +68,8 @@
             \item Exciting new applications which integrate with the real world and the users.
             \item Put the human in a feedback loop.
             \item High dimensional, context-aware inputs.
-            \item High dimensional, human-parseable outputs. 
-        \end{itemize}   
+            \item High dimensional, human-parseable outputs.
+        \end{itemize}
     }
 \end{frame}
 
@@ -67,7 +79,7 @@
         \item How do they interact with each other?
         \item How do they interact with infrastructure?
         \item How do they scale?
-        %\item KPI: Delays, Round-Trip Times (RTTs).
+              %\item KPI: Delays, Round-Trip Times (RTTs).
     \end{itemize}%
     \vspace{1em}%
     \begin{center}
@@ -81,8 +93,8 @@
         \begin{itemize}
             \item Apps are starting to proliferate.
             \item They are interesting for developers, users, training, live assistance, etc.
-            \item We still don't know much. 
-        \end{itemize}   
+            \item We still don't know much.
+        \end{itemize}
     }
 \end{frame}
 
@@ -91,15 +103,17 @@
     \begin{center}
         \input{figs/relatedwork.tex}\\
     \end{center}
-    \onslide<2->{%
-        \begin{block}{Our Contributions}
-            \begin{itemize}
-                \item A methodology for benchmarking human-in-the-loop applications.
-                      \onslide<3->{\item EdgeDroid: A benchmarking tool-suite.}
-                      \onslide<4->{\item Experiments and measurements which show the effectiveness of the approach.}
-            \end{itemize}
-        \end{block}%
-    }
+\end{frame}
+
+\begin{frame}{Our Contributions}
+
+    \begin{itemize}
+        \itemsep3em
+        \item A methodology for benchmarking human-in-the-loop applications.
+              \onslide<2->{\item EdgeDroid: A benchmarking tool-suite.}
+              \onslide<3->{\item Experiments and measurements which show the effectiveness of the approach.}
+    \end{itemize}
+
 \end{frame}
 
 \section{Approach}
@@ -119,7 +133,7 @@
             \item Hard because of humans.
             \item Trace-based approach with a ``user model'' which modulates the replay of the trace.
             \item I will explain ``user model'' in the next slides using an example.
-        \end{itemize}   
+        \end{itemize}
     }
 \end{frame}
 
@@ -135,7 +149,7 @@
             \item Explain LEGO step by step. Captures video and gives feedback instructions.
             \item Don't say it was created at CMU.
             \item Usable simple example for initial implementation because of Linear model.
-        \end{itemize}   
+        \end{itemize}
     }
 \end{frame}
 
@@ -150,7 +164,7 @@
             \item First step in our approach is tracing.
             \item Trace raw inputs.
             \item Example: LEGO -> video frames.
-        \end{itemize}   
+        \end{itemize}
     }
 \end{frame}
 
@@ -165,18 +179,18 @@
             \begin{itemize}
                 \item Segment trace into logical ``steps''.
                 \item Controlled replay of steps.
-                %\item Future work: model of user behavior.
+                      %\item Future work: model of user behavior.
             \end{itemize}
         \end{block}
         \begin{center}
             \input{figs/replay.tex}\\
         \end{center}}
-        \note{
+    \note{
         \begin{itemize}
             \item Merely replaying trace is not enough.
             \item What happens if the responsiveness of the system changes?
             \item Need a way to adapt the trace to system conditions.
-        \end{itemize}   
+        \end{itemize}
     }
 \end{frame}
 
@@ -189,10 +203,36 @@
     \end{center}
     \note{
         \begin{itemize}
-            \item Very short about implementation. 
+            \item Very short about implementation.
             \item Remind that we don't emulate backend or network.
-        \end{itemize}   
+        \end{itemize}
     }
+\end{frame}
+
+\begin{frame}{Timestamping}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{.5\linewidth}
+            \footnotesize%
+            \raggedright%
+            \input{figs/timestamping.tex}
+        \end{column}%
+        \begin{column}{.5\linewidth}
+            Clocks are synchronized previous to the experiment.
+
+            \vspace{\baselineskip}%
+            Timestamps at key points to obtain:
+
+            \begin{align}
+                {\Delta}T_\text{up}   & = t'_{r} - t_{s}  \\
+                {\Delta}T_\text{proc} & = t'_{s} - t'_{r} \\
+                {\Delta}T_\text{down} & = t_{r} - t'_{s}
+            \end{align}
+        \end{column}%
+    \end{columns}
+    %\vspace{\baselineskip}%
+    \begin{align}
+        {\Delta}T_\text{total} & = {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
+    \end{align}
 \end{frame}
 
 \section{Evaluation}
@@ -239,7 +279,7 @@
     \note{
         \begin{itemize}
             \item Use example of app developer and system designer to exemplify results.
-        \end{itemize}   
+        \end{itemize}
     }
 \end{frame}
 
@@ -252,8 +292,29 @@
             \item Use example of app developer and system designer to exemplify results.
             \item Important aspect is that these results are repeatable and automatically obtained.
             \item Did not have to train 10 users.
-        \end{itemize}   
+        \end{itemize}
     }
+\end{frame}
+
+\section{Future Work}
+\begin{frame}{Future Work}
+    \begin{itemize}
+        \item Extending EdgeDroid
+        \begin{itemize}
+            \item Characterizing human behavior
+            \item Extending to other types of applications
+        \end{itemize}
+        \item Characterizing Control Performance on Edge Computing Infrastructure
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Characterizing human behavior...}
+    \begin{block}{\ldots in the presence of delays in human-in-the-loop applications.}
+        Open research question: how do delays affect users?
+    \end{block}
+    \begin{center}
+        \input{figs/delays_users.tex}
+    \end{center}
 \end{frame}
 
 \section{Conclusions}
@@ -284,7 +345,7 @@
         \begin{itemize}
             \item Talk about future model of human behavior.
             \item Expand to other types of applications that are not task-based.
-        \end{itemize}   
+        \end{itemize}
     }
 \end{frame}
 
@@ -338,32 +399,6 @@
         \vspace{.1\textheight}%
         Future work: more elaborate models.
     \end{center}
-\end{frame}
-
-\begin{frame}{Timestamping}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{.5\linewidth}
-            \footnotesize%
-            \raggedright%
-            \input{figs/timestamping.tex}
-        \end{column}%
-        \begin{column}{.5\linewidth}
-            Clocks are synchronized previous to the experiment.
-
-            \vspace{\baselineskip}%
-            Timestamps at key points to obtain:
-
-            \begin{align}
-                {\Delta}T_\text{up}   & = t'_{r} - t_{s}  \\
-                {\Delta}T_\text{proc} & = t'_{s} - t'_{r} \\
-                {\Delta}T_\text{down} & = t_{r} - t'_{s}
-            \end{align}
-        \end{column}%
-    \end{columns}
-    %\vspace{\baselineskip}%
-    \begin{align}
-        {\Delta}T_\text{total} & = {\Delta}T_\text{up} + {\Delta}T_\text{proc} + {\Delta}T_\text{down} = t_{r} - t_{s}
-    \end{align}
 \end{frame}
 
 \begin{frame}[allowframebreaks, t]{References}

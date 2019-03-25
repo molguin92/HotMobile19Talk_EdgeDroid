@@ -1,12 +1,50 @@
-\begin{tikzpicture}[align=center, every node/.style={inner sep=2mm, circle, draw, very thick, text width=5em}]
+\begin{tikzpicture}[align=center]
 
-    \matrix[inner sep=0pt, column sep=4em, row sep=0pt, draw=none, rectangle] (mtx) {
-        \node[fill=C1, font=\color{white}] (proto) 
+    \begin{scope}[inner sep=0mm, circle, draw, text width=6em]
+        \node[fill=C1] (proto_color) {};
+        \node[fill=C4, right=4em of proto_color] (latency_color) {};
+        \node[fill=C5, right=4em of latency_color] (models_color) {};
+    \end{scope}
+
+    % labels
+    \begin{scope}[inner sep=0mm, font=\color{white}]
+        \node (proto_label) at (proto_color) 
         {Prototyping\\\autocite{Ha:TowardsWearableCogAssist,Chen:EarlyImplementation,Chatzopoulos:Hyperion,Jalaliniya:WearableAssistant}};
-        & \node[fill=C4, font=\color{white}] (latency) 
+
+        \node (latency_label) at (latency_color) 
         {Latencies\\\autocite{Chen:AnEmpiricalStudyOfLatency,Dolezal:PerformanceEval,Chatzopoulos:Survey}};
-        & \node[fill=C5, font=\color{white}] (models) 
+
+        \node (models_label) at (models_color)
         {Models\\\autocite{Zubaidy15,Schiessl17}};
-        \\
+    \end{scope}
+
+    % masking
+    \begin{scope}[inner sep=0mm, circle, draw, text width=6em]
+        \node[fill=white!70!black, opacity=.8, visible on= <3->] (proto_mask) at (proto_color) {};
+        \node[fill=white!70!black, opacity=.8, visible on= <1-2>] (latency_mask1) at (latency_color) {};
+        \node[fill=white!70!black, opacity=.8, visible on= <4->] (latency_mask2) at (latency_color) {};
+        \node[fill=white!70!black, opacity=.8, visible on= <-3>] (models_mask) at (models_color) {};
+    \end{scope}
+
+    % prototypes
+    \node[inner sep=0, visible on= <1>, below=1.5em of latency_color] (gabriel)
+    {\includegraphics[height=.5\textheight]{img/gabriel.pdf}\\Gabriel Platform};
+
+    \node[inner sep=0, visible on= <2>, below=1.5em of latency_color] (hyperion)
+    {\includegraphics[height=.5\textheight]{img/hyperion.pdf}\\Hyperion Assistant};
+
+    % latency
+    \node[inner sep=0, visible on= <3>, below=1.5em of latency_color] (latency_plot)
+    {\includegraphics[height=.5\textheight]{img/chen_latency.pdf}};
+
+    % models
+    \node[inner sep=0, visible on= <4>, below=1.5em of latency_color, text width=33em] (models_cit)
+    {%
+        \begin{itemize}
+            \itemsep2em
+            \item \fullcite{Zubaidy15}
+            \item \fullcite{Schiessl17}
+        \end{itemize}%
     };
+
 \end{tikzpicture}
