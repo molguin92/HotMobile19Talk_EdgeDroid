@@ -1,0 +1,38 @@
+\begin{tikzpicture}[align=center,
+    arrow/.style={draw, thick, -{Latex[length=2mm]}},
+    arrowr/.style={draw, thick, {Latex[length=2mm]}-}]
+    \node[duck, minimum height=5em] (user) {};
+    \node[circle, draw, thick, right=7em of user, text width=3em, inner sep=1mm, fill=blue!20!white] (proxy) {Delay\\Proxy};
+    \node[rectangle, draw, thick, right=7em of proxy, 
+    text width=6em, inner sep=2mm, rounded corners=.7mm, minimum height=3em, fill=red!20!white] (app) {Application};
+
+    \draw [arrowr] (proxy.170) -- (user.east |- proxy.170) {};
+    \draw [arrow] (proxy.190) -- (user.east |- proxy.190) {};
+
+    \draw [arrow] (proxy.10) -- (app.west |- proxy.10) {};
+    \draw [arrowr] (proxy.350) -- (app.west |- proxy.350) {};
+
+    \node[circle, draw, thick, below=0em of user.center, minimum size=2em] (monitor) {}; 
+
+    % models
+    \node[inner sep=2mm, draw, thick, rectangle, below=4em of proxy, text width=12em] (exp_control)
+    {%
+        Experiment controller
+        \begin{itemize}
+            \itemsep2em
+            \item Control delays
+            \item Monitor:
+            \begin{itemize}
+                \item Subject physiology
+                \item Task performance
+            \end{itemize}%
+        \end{itemize}%
+    };
+
+    \node[circle, inner sep=.7mm, fill=black] at (proxy.south) {};
+    \node[circle, inner sep=.7mm, fill=black] at (monitor.south) {};
+
+    \draw [thick] (exp_control.north) -- (proxy.south) {};
+    \draw [thick] (monitor.south) |- (exp_control.200) {};
+
+\end{tikzpicture}

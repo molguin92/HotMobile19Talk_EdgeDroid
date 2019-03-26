@@ -308,24 +308,35 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Characterizing human behavior...}
-    \begin{block}{\ldots in the presence of delays in human-in-the-loop applications.}
-        Open research question: how do delays affect users?
+\subsection{Characterizing human behavior}
+\begin{frame}{Characterizing human behavior\ldots}
+    \begin{block}{\ldots~in the presence of delays in human-in-the-loop applications.}
+        Open research question: how do these delays affect users?
     \end{block}
     \begin{center}
         \input{figs/delays_users.tex}
     \end{center}
 \end{frame}
 
+\begin{frame}{Prop. Experiment Setup}
+    \begin{center}
+        \input{figs/user_experiment.tex}
+    \end{center}
+\end{frame}
+
+\subsection{Control Performance on Edge Computing}
+\begin{frame}{Control Performance on Edge Computing}
+    Similar idea --- EdgeDroid for control.\\
+    Main focus: study achievable latencies and reliability with off-the-shelf infrastructure.\\
+    \vspace{2em}
+    \begin{center}
+        \input{figs/edgedroid_control.tex}
+    \end{center}
+
+\end{frame}
+
 \section{Conclusions}
 \begin{frame}{Conclusions}
-    \begin{block}{Future Work}
-        \begin{itemize}
-            \item User Model.
-            \item Other types of Applications.
-        \end{itemize}
-    \end{block}
-
     \begin{block}{Summary}
         \begin{itemize}
             \item Need to study the scaling of Human-in-the-Loop applications.
@@ -341,6 +352,18 @@
             \item Results which show the utility of EdgeDroid.
         \end{itemize}
     \end{block}
+
+    \begin{block}{Future Work}
+        \begin{itemize}
+            \item Extending EdgeDroid
+            \begin{itemize}
+                \item Characterizing human behavior
+                \item Extending to other types of applications
+            \end{itemize}
+            \item Characterizing Control Performance on Edge Computing Infrastructure
+        \end{itemize}
+    \end{block}
+
     \note{
         \begin{itemize}
             \item Talk about future model of human behavior.
@@ -349,27 +372,34 @@
     }
 \end{frame}
 
+% \startpage
+% \begin{frame}{}
+%     \begin{center}
+%         \textbf{\Large Thank you.}\\
+%         \vspace{.1\textheight}%
+%         \begin{block}{\footnotesize Contact}
+%             \tiny%
+%             \textbf{Manuel Olguín Muñoz}\\
+%             Division of Information Science and Engineering\\
+%             KTH EECS\\
+%             Malvinas väg 10, 100-44 Stockholm, SWEDEN\\
+%             \vspace{.01\textheight}
+%             Email: \emailref{molguin@kth.se}\\
+%             Website: \urlref{https://olguin.se}\\
+%         \end{block}
+%     \end{center}
+%     \vspace{.1\textheight}%
+% \end{frame}
+
 \startpage
+\section{Extra Slides}
 \begin{frame}{}
     \begin{center}
-        \textbf{\Large Thank you.}\\
-        \vspace{.1\textheight}%
-        \begin{block}{\footnotesize Contact}
-            \tiny%
-            \textbf{Manuel Olguín Muñoz}\\
-            Division of Information Science and Engineering\\
-            KTH EECS\\
-            Malvinas väg 10, 100-44 Stockholm, SWEDEN\\
-            \vspace{.01\textheight}
-            Email: \emailref{molguin@kth.se}\\
-            Website: \urlref{https://olguin.se}\\
-        \end{block}
+        \Large Extra Slides
     \end{center}
-    \vspace{.1\textheight}%
 \end{frame}
 
 \normalpage
-\section{Extra Slides}
 \begin{frame}{Requirements}
     \begin{columns}[onlytextwidth]
         \begin{column}{.5\linewidth}

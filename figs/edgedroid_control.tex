@@ -1,0 +1,49 @@
+\begin{tikzpicture}[align=center,
+    arrow/.style={draw, thick, -{Latex[length=2mm]}},
+    arrowr/.style={draw, thick, {Latex[length=2mm]}-}]
+
+    % Plant ------------------------------------------
+    \node[draw, thick, rectangle, text width=6em, minimum height=6em] (system) {Emulated\\System};
+    \node[draw, thick, circle, minimum size=1em, fill=red] (actuator) at (system.south) {};
+    \node[draw, thick, circle, minimum size=1em, fill=green] (sensor) at (system.east) {};
+
+    \node[draw, thick, rectangle, text width=6em, rotate=90, right=5em of system, anchor=north, minimum height=2em, inner sep=0mm] (plant_mtr) {Framework};
+
+    \node[above right=1mm of sensor.center] () {Sensor};
+    \node[below right=1mm of actuator.center] () {Actuator};
+
+    \draw[arrow] (sensor) -- (plant_mtr);
+
+    \coordinate[below=2em of plant_mtr.west] (anchor1);
+    \coordinate[below=2em of system.south] (anchor2);
+    \draw[thick] (plant_mtr.west) -- (anchor1);
+    \draw[thick] (anchor1) -- (anchor2);
+    \draw[arrow] (anchor2) -- (actuator);
+
+    \node[draw, thick, fit=(system) (plant_mtr) (anchor1) (anchor2)] (plant) {};
+    % Plant ------------------------------------------
+
+    % Cloudlet ---------------------------------------
+    \node[draw, thick, rectangle, text width=6em, rotate=90, right=9em of plant_mtr.south, anchor=north, minimum height=2em, inner sep=0mm] (control_mtr) {Framework};
+    \node[draw, thick, rectangle, text width=6em, minimum height=6em, right=2em of control_mtr.south] (controller) {Controller};
+
+    \draw[arrow] (control_mtr.300) -- (controller.west |- control_mtr.300);
+    \draw[arrowr] (control_mtr.240) -- (controller.west |- control_mtr.240);
+
+    \coordinate[below=2em of control_mtr.west] (anchor3);
+    \node[draw, thick, fit=(control_mtr) (controller) (anchor3)] (cloudlet) {};
+    % Cloudlet ---------------------------------------
+
+    \draw[arrowr] (control_mtr.60) -- coordinate[midway] (anchor4) (plant_mtr.south |- control_mtr.60);
+    \draw[arrow] (control_mtr.120) -- coordinate[midway] (anchor5) (plant_mtr.south |- control_mtr.120);
+    \path (anchor4) -- coordinate[midway] (anchor6) (anchor5);
+    \path (plant.south) -- coordinate[midway] (anchor7) (cloudlet.south);
+    \path (anchor7) -| coordinate (anchor8) (anchor6);
+
+    \node[circle, draw, thick, dashed, minimum size=5em] (network) at (anchor6) {};
+    \node[below=.5em of anchor8] (net_label) {Real Network};
+    \draw[thick, *-] (net_label) -- (network);
+
+    \node[below=.5em of plant.south] (plant_label) {Emulated Plant\\(RaspPi, BBone, etc)};
+    \node[below=.5em of cloudlet.south] (cloudlet_label) {Cloudlet};
+\end{tikzpicture}

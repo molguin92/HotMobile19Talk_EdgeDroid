@@ -1,0 +1,58 @@
+\begin{tikzpicture}[align=center,
+    arrow/.style={draw, thick, -{Latex[length=2mm]}},
+    arrowr/.style={draw, thick, {Latex[length=2mm]}-}]
+
+    % Plant ------------------------------------------
+    \matrix[inner sep=0mm, row sep=.5em, nodes={inner sep=2mm, draw, rectangle, thick, text width=5em, minimum height=1em}] (plant) 
+    {
+        \node(sensor) {Emulated\\Sensor}; \\
+        \node(system) {Emulated\\System}; \\
+        \node(actuator) {Emulated\\Actuator}; \\
+    };
+
+    \coordinate[right=4.5em of sensor.north] (co1);
+    \coordinate[right=4.5em of actuator.south] (co2);
+    \path (co1) -- coordinate[midway] (co3) (co2);
+
+    \node[rotate around={90:(co3)}, minimum height=2em] (plant_mtr_label) at (co3) {Framework};
+    \node[fit=(co1) (co2) (plant_mtr_label), inner sep=0mm, draw, thick] (plant_mtr) {};
+
+    \path (actuator.south west) -- coordinate[midway] (co4) (plant_mtr.south east);
+    \node [below=.5em of co4, anchor=north] (plant_label) {Emulated Plant\\(RasPi, BBone, etc)};
+    \node[fit=(sensor) (plant_mtr) (plant_label), draw, thick, rectangle] (plant_fit) {};
+    % Plant ------------------------------------------
+
+    % Cloudlet ---------------------------------------
+    \coordinate[right=12em of co3] (co5);
+    \node[rotate around={90:(co5)}, minimum height=2em] (cloudlet_mtr_label) at (co5) {Framework};
+
+    \coordinate[right=12em of co1] (co6);
+    \coordinate[right=12em of co2] (co7);
+    \node[fit=(co6) (co7) (cloudlet_mtr_label), inner sep=0mm, draw, thick] (cloudlet_mtr) {};
+
+    \node[text width=5em, right=.5em of cloudlet_mtr, anchor=west] (control_label) {Real\\Controller};
+    \coordinate[right=.5em of cloudlet_mtr.north east] (co8);
+    \coordinate[right=.5em of cloudlet_mtr.south east] (co9);
+    \node[draw, rectangle, thick, fit= (control_label) (co8) (co9), inner sep=0mm] (control) {};
+
+    \path (cloudlet_mtr.south west) -- coordinate[midway] (co10) (control.south east);
+    \node [below=.5em of co10, anchor=north] (cloudlet_label) {Cloudlet};
+
+    \path (cloudlet_mtr) |- coordinate (c11) (plant_label.south);
+    \node[fit=(c11) (cloudlet_label) (control) (cloudlet_mtr), draw, rectangle, thick] (cloudlet_fit) {};
+    % Cloudlet ---------------------------------------
+
+
+    \begin{scope}[every path/.style=arrow]
+        \path (plant_mtr.45) -- coordinate[midway] (c12) (cloudlet_mtr.135);
+        \path (cloudlet_mtr.225) -- coordinate[midway] (c13) (plant_mtr.315);
+    \end{scope}
+
+    \path (c12) -- coordinate[midway] (c14) (c13);
+    \node[circle, draw, dashed, thick, inner sep=0mm, minimum size=7em] (network) at (c14) {};
+
+    \node[below=7em of c14] (net_label) {Real Network};
+    \draw[thick, *-] (net_label) -- (network);
+
+    \node[] () at (c14) {Real Load};
+\end{tikzpicture}
