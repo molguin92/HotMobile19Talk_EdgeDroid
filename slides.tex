@@ -44,20 +44,6 @@
 \end{frame}
 
 \normalpage%
-
-\begin{frame}
-    \begin{block}{Acknowledgements}
-        Part of an ongoing collaboration with the Elijah Group at Carnegie Mellon University, led by Prof. Mahadev Satyanarayanan.\\
-        \vspace{3em}
-        \begin{center}
-            \includegraphics[width=.7\linewidth]{img/cmu_csd.png}\\
-        \end{center}
-        \vspace{3em}
-        This work was recently presented at HotMobile'19~\autocite{Olguin:EdgeDroid2019}.
-    \end{block}
-\end{frame}
-
-
 \section{Introduction}
 \begin{frame}{}
     \begin{center}
@@ -117,6 +103,27 @@
 \end{frame}
 
 \section{Approach}
+\begin{frame}{Benchmarking\ldots~what?}
+    Key question:
+    \begin{block}{In what way is system performance reflected in terms of user experience?}
+        \vspace{1em}
+        \onslide<2>{{\Large Answer: Time}
+        \begin{itemize}
+            \item Latency
+            \item Jitter
+        \end{itemize}}
+    \end{block}
+
+    \onslide<2>{%
+    \begin{block}{Human time-perception is tail-driven\dots}
+        Users tend to remember worst-case occurrences rather than averages.\\
+        \vspace{2em}
+        {\Large KPIs: Delays (total RTT and segment-wise)}        
+    \end{block}%
+    } 
+\end{frame}
+
+
 \begin{frame}{Approach}
     \begin{center}
         \input{figs/approach.tex}\\%
@@ -198,8 +205,8 @@
 \begin{frame}{Implementation: EdgeDroid}
     \begin{center}
         \input{figs/architecture.tex}\\
-        \vspace{.1\textheight}
-        \Large\icontag{\faGithub}{\urlref{https://github.com/molguin92/EdgeDroid}}
+        %\vspace{.1\textheight}
+        %\Large\icontag{\faGithub}{\urlref{https://github.com/molguin92/EdgeDroid}}
     \end{center}
     \note{
         \begin{itemize}
@@ -256,7 +263,7 @@
                 \begin{itemize}
                     \item Three \emph{optimal} scenarios with 1, 5 and 10 devices.
                     \item Weakened wireless link with 10 devices.
-                    \item KPI: Round-Trip Time (RTT).
+                    %\item KPI: Round-Trip Time (RTT).
                 \end{itemize}
             \end{block}%
         \end{column}%
@@ -318,7 +325,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Prop. Experiment Setup}
+\begin{frame}{Proposed Experiment Setup}
     \begin{center}
         \input{figs/user_experiment.tex}
     \end{center}
@@ -326,8 +333,12 @@
 
 \subsection{Control Performance on Edge Computing}
 \begin{frame}{Control Performance on Edge Computing}
-    Similar idea --- EdgeDroid for control.\\
-    Main focus: study achievable latencies and reliability with off-the-shelf infrastructure.\\
+    \begin{block}{EdgeDroid for Control Applications}
+        Main focus: study achievable latencies and reliability with off-the-shelf infrastructure.
+
+        Similar to the NCSBench platform developed at TUM\footnote{\urlref{https://github.com/tum-lkn/NCSbench/}}\autocite{ncsbench}.
+    \end{block}
+
     \vspace{2em}
     \begin{center}
         \input{figs/edgedroid_control.tex}
@@ -370,6 +381,18 @@
             \item Expand to other types of applications that are not task-based.
         \end{itemize}
     }
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Acknowledgements}
+        Part of an ongoing collaboration with the Elijah Group at Carnegie Mellon University, led by Prof. Mahadev Satyanarayanan.\\
+        \vspace{3em}
+        \begin{center}
+            \includegraphics[width=.7\linewidth]{img/cmu_csd.png}\\
+        \end{center}
+        \vspace{3em}
+        This work was recently presented at HotMobile'19~\autocite{Olguin:EdgeDroid2019}.
+    \end{block}
 \end{frame}
 
 % \startpage
