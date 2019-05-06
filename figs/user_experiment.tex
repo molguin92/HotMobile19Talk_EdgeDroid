@@ -1,18 +1,23 @@
 \begin{tikzpicture}[align=center,
-    arrow/.style={draw, thick, -{Latex[length=2mm]}},
-    arrowr/.style={draw, thick, {Latex[length=2mm]}-}]
-    \node[duck, minimum height=5em] (user) {};
-    \node[circle, draw, thick, right=7em of user, text width=3em, inner sep=1mm, fill=blue!20!white] (proxy) {Delay\\Proxy};
-    \node[rectangle, draw, thick, right=7em of proxy, 
-    text width=6em, inner sep=2mm, rounded corners=.7mm, minimum height=3em, fill=red!20!white] (app) {Application};
+    line/.style={draw, very thick},
+    arrow/.style={draw, very thick, -{Latex[length=3mm]}},
+    arrowr/.style={draw, very thick, {Latex[length=3mm]}-}]
+    \node[circle, draw, minimum height=5em, fill=red!20!white] (client) {Client};
+    \node[duck, draw, thick, minimum height=5em, anchor=east] (user) at (client.west) {};
 
-    \draw [arrowr] (proxy.170) -- (user.east |- proxy.170) {};
-    \draw [arrow] (proxy.190) -- (user.east |- proxy.190) {};
+    \path (user.center) -- coordinate [midway] (userlabelanchor) (user.south) {};
+    \node[inner sep=0mm] (userlabel) at (userlabelanchor) {User};
 
-    \draw [arrow] (proxy.10) -- (app.west |- proxy.10) {};
-    \draw [arrowr] (proxy.350) -- (app.west |- proxy.350) {};
+    \node[rectangle, draw, thick, right=2em of client, 
+    text width=9em, inner sep=2mm, rounded corners=.7mm, minimum height=3em, fill=blue!20!white] (proxy) {Emulated Delay};
+    \node[rectangle, draw, thick, right=2em of proxy, 
+    text width=6em, inner sep=2mm, rounded corners=.7mm, minimum height=5em, fill=red!20!white] (app) {Application};
 
-    \node[circle, draw, thick, below=0em of user.center, minimum size=2em] (monitor) {}; 
+    \draw [line] (proxy.175) -- (client.east |- proxy.175) {};
+    \draw [arrow] (proxy.185) -- (client.east |- proxy.185) {};
+
+    \draw [arrow] (proxy.5) -- (app.west |- proxy.5) {};
+    \draw [line] (proxy.355) -- (app.west |- proxy.355) {}; 
 
     % models
     \node[inner sep=2mm, draw, thick, rectangle, below=4em of proxy, text width=12em] (exp_control)
@@ -29,10 +34,12 @@
         \end{itemize}%
     };
 
-    \node[circle, inner sep=.7mm, fill=black] at (proxy.south) {};
-    \node[circle, inner sep=.7mm, fill=black] at (monitor.south) {};
+    \node [circle, inner sep=.7mm, fill=black] at (proxy.south) {};
+    \node [circle, inner sep=.7mm, fill=black] at (client.south) {};
+    \node [circle, inner sep=.7mm, fill=black] at (user.south) {};
 
     \draw [thick] (exp_control.north) -- (proxy.south) {};
-    \draw [thick] (monitor.south) |- (exp_control.200) {};
+    \draw [thick] (client.south) |- coordinate (elbow) (exp_control.200) {};
+    \draw [thick] (user.south) |- (elbow) {};
 
 \end{tikzpicture}
