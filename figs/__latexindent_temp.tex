@@ -1,0 +1,16 @@
+\begin{tikzpicture}[align=center]
+
+    \node[inner sep=0mm, anchor=center, visible on= <1-2>] 
+    (realuser) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
+
+    \draw[red, line width=2mm, line cap=round, visible on= <2>]
+    (realuser.south west) -- (realuser.north east)
+    (realuser.south east) -- (realuser.north west);
+
+        % trace
+        \node[inner sep=0mm, anchor=center, visible on= <3>] 
+        (trace_alone) at (realuser.center) {\includegraphics[height=.2\textheight]{img/floppy.png}};
+
+        
+
+\end{tikzpicture}

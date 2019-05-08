@@ -1,0 +1,31 @@
+\begin{tikzpicture}[align=center]
+
+    \node[inner sep=0mm, anchor=center, visible on= <1-2>] 
+    (realuser) {\includegraphics[height=.2\textheight]{img/google-glass.png}};
+    \node[inner sep=0mm, anchor=base, above=2mm of realuser.north, visible on= <1-2>] 
+    (tracelabel) {Real User};
+
+    \draw[red, line width=2mm, line cap=round, visible on= <2>]
+    (realuser.south west) -- (realuser.north east)
+    (realuser.south east) -- (realuser.north west);
+
+    % trace
+    \node[inner sep=0mm, anchor=center, visible on= <3>] 
+    (trace_alone) at (realuser.center) {\includegraphics[height=.2\textheight]{img/floppy.png}};
+    \node[inner sep=0mm, anchor=base, above=2mm of trace_alone.north, visible on= <3>] 
+    (tracelabel) {Trace};
+    
+
+    % server
+    \node [inner sep=0pt, anchor=center, right=16em of realuser] 
+    (server) {\includegraphics[height=.2\textheight]{img/server.png}};
+
+    \draw [very thick, line cap=round, -{Latex[length=2.5mm]}] 
+    (user.10) -- node[midway, anchor=south west, inner sep=0] (inputlabel) {Input} (server.170);
+    \draw [very thick, line cap=round, -{Latex[length=2.5mm]}]
+    (server.190) -- node[midway, anchor=north west, inner sep=0] (feedbacklabel) {Feedback} (user.350);
+
+    \node [rectangle, draw, dashed, fit=(inputlabel) (feedbacklabel) (server), inner sep=2em] (serverfit) {};
+    \node[inner sep=0mm, anchor=base, above=2mm of serverfit.north] (serverfitlabel) {Real backend \& network};
+
+\end{tikzpicture}
